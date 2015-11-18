@@ -83,7 +83,7 @@ session_start();
                                    
                                   <div class="input-group">
                                    
-                                    <input type="text" class="form-control" placeholder="Identificación" name="identy" id="identy">
+                                    <input type="text" class="form-control" placeholder="Identificación" name="identy" id="identy" value="72260404">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
                                   </div> 
                              </div>
@@ -91,8 +91,8 @@ session_start();
                                 <div class="form-group">
                                    
                                         <select class="form-control" id="tipo_id" name="tipo_id">
-                                          <option value="0" selected="selected">Seleccione documento</option>
-                                          <option value="1">Cédula de ciudadanía</option>
+                                          <option value="0" >Seleccione documento</option>
+                                          <option selected="selected" value="1">Cédula de ciudadanía</option>
                                           <option value="2">Tarjeta de identidad</option>
                                           
                                         </select>
@@ -108,7 +108,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text" class="form-control" id="p_name" name="p_name" placeholder="Primer Nombre">
+                                    <input type="text" class="form-control" id="p_name" name="p_name" placeholder="Primer Nombre" value="Jailton">
                                     
                                   </div> 
                              </div>
@@ -116,7 +116,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text" class="form-control" id="s_name" name="s_name" placeholder="Segundo Nombre">
+                                    <input type="text" class="form-control" id="s_name" name="s_name" placeholder="Segundo Nombre" value="Joel">
                                     
                                   </div> 
                              </div>
@@ -124,7 +124,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text" class="form-control" id="p_apellido" name="p_apellido" placeholder="Primer Apellido">
+                                    <input type="text" class="form-control" id="p_apellido" name="p_apellido" placeholder="Primer Apellido" value="Yanes">
                                     
                                   </div> 
                              </div>
@@ -132,7 +132,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text" class="form-control" id="s_apellido" name="s_apellido" placeholder="Segundo Apellido">
+                                    <input type="text" class="form-control" id="s_apellido" name="s_apellido" placeholder="Segundo Apellido" value="Romero">
                                     
                                   </div> 
                              </div>
@@ -145,7 +145,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento">
+                                    <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="1981/04/06">
                                     
                                   </div> 
                              </div>
@@ -153,7 +153,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad">
+                                    <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="34 años">
                                     
                                   </div> 
                              </div>
@@ -164,7 +164,7 @@ session_start();
                                      <select class="form-control" id="estado_civil" name="estado_civil">
                                           <option value="0" selected="selected">Estado Civil</option>
                                           <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
+                                          <option value="2" selected="selected">Casado(a)</option>
                                           <option value="1">Unión libre</option>
                                           <option value="2">Divorciado(a)</option>
                                           <option value="1">Viudo(a)</option>
@@ -185,7 +185,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                     <label class="radio-inline"><input type="radio" name="optradio" id="masculino">Masculino</label>
+                                     <label class="radio-inline"><input type="radio" name="optradio" id="masculino" checked="true">Masculino</label>
                                      <label class="radio-inline"><input type="radio" name="optradio" id="femenino">Femenino</label>
                                       
                                     
@@ -196,13 +196,10 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="tipo_usuario" name="tipo_usuario">
-                                          <option value="0" selected="selected">Tipo de usuario</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
-                                          
+                                          <option value="0" >Tipo de usuario</option>
+                                          <option  selected="selected" value="1">Contributivo</option>
+                                          <option value="2">Cotizante</option>
+                                                                         
 
                                           
                                         </select> 
@@ -214,11 +211,8 @@ session_start();
                                    
                                      <select class="form-control" id="tipo_afiliado" name="tipo_afiliado">
                                           <option value="0" selected="selected">Tipo de afiliado</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
+                                          <option value="1" selected="selected">Cotizante</option>
+                                          
                                           
 
                                           
@@ -237,12 +231,9 @@ session_start();
                                   <div class="form-group">
                                    
                                      <select class="form-control" id="zona_res" name="zona_res">
-                                          <option value="0" selected="selected">Zona Residencial</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
+                                          <option value="0" >Zona Residencial</option>
+                                          <option selected="selected" value="1">Urbano</option>
+                                          
                                           
 
                                           
@@ -256,12 +247,9 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="dpto" name="dpto">
-                                          <option value="0" selected="selected">Departamento</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
+                                          <option value="0" >Departamento</option>
+                                          <option value="1" selected="selected">Atlántico</option>
+                                          
                                           
 
                                           
@@ -273,12 +261,9 @@ session_start();
                                   <div class="form-group">
                                    
                                      <select class="form-control" id="ciudad" name="ciudad">
-                                          <option value="0" selected="selected">Ciudad</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
+                                          <option value="0" >Ciudad</option>
+                                          <option value="1" selected="selected">Barranquilla</option>
+                               
                                           
 
                                           
@@ -298,12 +283,8 @@ session_start();
                                   <div class="form-group">
                                    
                                      <select class="form-control" id="ocupacion" name="ocupacion">
-                                          <option value="0" selected="selected">Ocupación</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
+                                          <option value="0" >Ocupación</option>
+                                          <option value="9999" selected="selected">Persona que no declara ocupación</option>
                                           
 
                                           
@@ -324,7 +305,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="ocupacion" name="ocupacion" placeholder="Dirección">
+                                  <input type="text"  class="form-control" id="dirección" name="dirección" placeholder="Dirección" value="Calle 49 # 9 - 03">
                                       
                                     
                                   </div> 
@@ -341,7 +322,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                     <input type="text"  class="form-control" id="telefono" name="telefono" placeholder="Teléfono"> 
+                                     <input type="text"  class="form-control" id="telefono" name="telefono" placeholder="Teléfono" value="3624483"> 
                                       
                                     
                                   </div> 
@@ -351,8 +332,8 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="estado" name="estado">
-                                          <option value="" selected="selected">Estado</option>
-                                          <option value="1">Activo(a)</option>
+                                          <option value="" >Estado</option>
+                                          <option selected="selected" value="1">Activo(a)</option>
                                           <option value="2">Inactivo(a)</option>
                                          
                                           
@@ -365,13 +346,10 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                     <select class="form-control" id="ciudad" name="ciudad">
-                                          <option value="0" selected="selected">Grupo Atención</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
+                                     <select class="form-control" id="grupo_aten" name="grupo_aten">
+                                          <option value="0" >Grupo Atención</option>
+                                          <option selected="selected" value="1" >Contributivo</option>
+                                          
                                           
 
                                           
@@ -387,30 +365,12 @@ session_start();
                       </div> <!-- fin de una fila -->
                        <div class="row"><!-- una fila -->
                         
-                             <div class="col-md-6"> 
+                            
+                              <div class="col-md-12"> 
                                    
                                   <div class="form-group">
                                    
-                                       <select class="form-control" id="ciudad" name="ciudad">
-                                          <option value="0" selected="selected">Grupo Atención</option>
-                                          <option value="1">Soltero(a)</option>
-                                          <option value="2">Casado(a)</option>
-                                          <option value="1">Unión libre</option>
-                                          <option value="2">Divorciado(a)</option>
-                                          <option value="1">Viudo(a)</option>
-                                          
-
-                                          
-                                        </select> 
-                                      
-                                    
-                                  </div> 
-                             </div>
-                              <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                   
-                                  <input type="text"  class="form-control" id="email" name="email" placeholder="E-mail"> 
+                                  <input type="text"  class="form-control" id="email" name="email" placeholder="E-mail" value="jailtonyanesromero@gmail.com"> 
                                     
                                   </div> 
                              </div>
@@ -424,7 +384,7 @@ session_start();
                                    
                                          <select class="form-control" id="acom" name="acom">
                                           <option value=" " selected="selected">Acompañante</option>
-                                          <option value="1">Si</option>
+                                          <option selected="selected" value="1">Si</option>
                                           <option value="2">No</option>
                                    
                                           
@@ -439,7 +399,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="nom_acom" name="nom_acom" placeholder="Teléfono"> 
+                                  <input type="text"  class="form-control" id="nom_acom" name="nom_acom" placeholder="Apellidos y nombres del acompañante" value="Narciza Romero"> 
                                     
                                   </div> 
                              </div>
@@ -453,7 +413,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text"  class="form-control" id="parentezco" name="parentezco" placeholder="Parentezco"> 
+                                    <input type="text"  class="form-control" id="parentezco" name="parentezco" placeholder="Parentezco" value="Madre"> 
                                  
                                     
                                   </div> 
@@ -462,7 +422,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="dir_acom" name="dir_acom" placeholder="Dirección"> 
+                                  <input type="text"  class="form-control" id="dir_acom" name="dir_acom" placeholder="Dirección" value="Kra 6 # 51 b - 35 "> 
                                     
                                   </div> 
                              </div>
@@ -473,7 +433,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="teléfono" name="teléfono" placeholder="Teléfono"> 
+                                  <input type="text"  class="form-control" id="teléfono" name="teléfono" placeholder="Teléfono" value="3624483"> 
                                     
                                   </div> 
                              </div>
@@ -490,7 +450,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text"  class="form-control" id="apellidos_res" name="apellidos_res" placeholder="Apellidos"> 
+                                    <input type="text"  class="form-control" id="apellidos_res" name="apellidos_res" placeholder="Apellidos" value="Romero Pedroza"> 
                                  
                                     
                                   </div> 
@@ -499,7 +459,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="nombres_res" name="nombres_res" placeholder="Nombres"> 
+                                  <input type="text"  class="form-control" id="nombres_res" name="nombres_res" placeholder="Nombres" value="Narciza Judith"> 
                                     
                                   </div> 
                              </div>
@@ -515,7 +475,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                    <input type="text"  class="form-control" id="parentezco_res" name="parentezco_res" placeholder="Parentezco"> 
+                                    <input type="text"  class="form-control" id="parentezco_res" name="parentezco_res" placeholder="Parentezco" value="Madre"> 
                                  
                                     
                                   </div> 
@@ -524,7 +484,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="direccion_res" name="direccion_res" placeholder="Dirección"> 
+                                  <input type="text"  class="form-control" id="direccion_res" name="direccion_res" placeholder="Dirección" value="Kra 6 # 51 b - 35 "> 
                                     
                                   </div> 
                              </div>
@@ -532,7 +492,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                  <input type="text"  class="form-control" id="telefono_res" name="telefono_res" placeholder="Teléfono"> 
+                                  <input type="text"  class="form-control" id="telefono_res" name="telefono_res" placeholder="Teléfono" value="3624483"> 
                                     
                                   </div> 
                              </div>
@@ -583,9 +543,9 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="procedencia" name="procedencia">
-                                          <option value="" selected="selected">Procedencia</option>
-                                          <option value="1">Activo(a)</option>
-                                          <option value="2">Inactivo(a)</option>
+                                          <option value="" >Procedencia</option>
+                                          <option value="1" selected="selected">Particular</option>
+                                         
                                          
                                           
 
@@ -597,7 +557,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                     <input type="text"  class="form-control" id="ncontrato" name="ncontrato" placeholder="Número de contrato"> 
+                                     <input type="text"  class="form-control" id="ncontrato" name="ncontrato" placeholder="Número de contrato" value="350129483"> 
                                       
                                     
                                   </div> 
@@ -607,7 +567,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                     <input type="text"  class="form-control" id="fecha_ult_vis" name="fecha_ult_vis" placeholder="Fecha de última visita"> 
+                                     <input type="text"  class="form-control" id="fecha_ult_vis" name="fecha_ult_vis" placeholder="Fecha de última visita" value="2015/07/12"> 
                                       
                                     
                                   </div> 
@@ -625,9 +585,9 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="plan_salud" name="plan_salud">
-                                          <option value="0" selected="selected">Plan Salud</option>
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
+                                          <option value="0" >Plan Salud</option>
+                                          <option value="1" selected="selected" >Normal</option>
+                                   
                                          
                                           
 
@@ -639,7 +599,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                     <input type="text"  class="form-control" id="nhistoria" name="nhistoria" placeholder="Número de historia"> 
+                                     <input type="text"  class="form-control" id="nhistoria" name="nhistoria" placeholder="Número de historia" value="2234983570"> 
                                       
                                     
                                   </div> 
@@ -681,9 +641,9 @@ session_start();
                                    <div class="col-md-6"> 
                                    
                                     <select class="form-control" id="medico" name="medico">
-                                          <option value="0" selected="selected">Médico</option>
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
+                                          <option value="0" >Médico</option>
+                                          <option value="1" selected="selected">Juan Rico Meza</option>
+                                          
                                          
                                           
 
@@ -696,9 +656,9 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="consulta" name="consulta">
-                                          <option value="0" selected="selected">Consulta/Procedimiento</option>
+                                          <option value="0" >Consulta/Procedimiento</option>
                                           <option value="1">Consulta</option>
-                                          <option value="2">Procedimiento</option>
+                                          <option  selected="selected" value="2">Procedimiento</option>
                                   </select> 
                                   </div> 
                              </div>
@@ -710,9 +670,9 @@ session_start();
                                    <div class="col-md-6"> 
                                    
                                     <select class="form-control" id="proc_consult" name="proc_consult">
-                                          <option value="0" selected="selected">Escoja Procedimiento/consulta</option>
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
+                                          <option value="0" selected="selected">Tipo Procedimiento/consulta</option>
+                                          <option value="1">Colonoscopia</option>
+                                          <option value="2">Esofagogastroduodenoscopia (EGD)</option>
                                          
                                           
 
@@ -725,9 +685,9 @@ session_start();
                                   <div class="form-group">
                                    
                                    <select class="form-control" id="equipo" name="equipo">
-                                          <option value="0" selected="selected">Escoja Equipo</option>
-                                          <option value="1">Consulta</option>
-                                          <option value="2">Procedimiento</option>
+                                          <option value="0" >Escoja Equipo</option>
+                                          <option selected="selected" value="1">Lt-nkj01</option>
+                                         
                                   </select> 
                                   </div> 
                              </div>
@@ -739,9 +699,9 @@ session_start();
                                    <div class="col-md-6"> 
                                    
                                     <select class="form-control" id="institucion" name="institucion">
-                                          <option value="0" selected="selected">Escoja Institución</option>
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
+                                          <option value="0" >Escoja Institución</option>
+                                          <option value="1" selected="selected">Clínica Porto Azul</option>
+                                          
                                          
                                           
 
@@ -753,7 +713,7 @@ session_start();
                                    
                                   <div class="form-group">
                                    
-                                   <input type="text"  class="form-control" id="n_orden" name="n_orden" placeholder="Número de orden">
+                                   <input type="text"  class="form-control" id="n_orden" name="n_orden" placeholder="Número de orden" value="9834728213">
                                   </div> 
                              </div>
                          

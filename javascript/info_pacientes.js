@@ -168,7 +168,8 @@ $(document).ready(function(){
 
     //ingreso_pac
     $("#ingreso_pac").click(function() {
-        window.location.href = "../examples/captura.php";
+    	alert("Datos Guardados exitosamente.");
+        window.location.href = "../examples/captura.php?uid="+$("#proc_consult").val();
     });
 
   
