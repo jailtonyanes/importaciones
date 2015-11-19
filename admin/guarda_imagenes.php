@@ -7,30 +7,43 @@
 
  $con->conectar();
 
-  $crud = new Crud();
 
+  $crud2 = new Crud();
  
-  $campos = "contenido";
+  //insertamos el orden
+    $campos = "fecha_captu";
+  $tabla = "orden_captu";
+  $mensaje = "ok";
+  $valores = date('Y-m-d');
+  //------------
+$crud2->insertar($valores,$campos,$tabla,$con->getConnection(),$mensaje,'captura_id'); 
+
+  $crud = new Crud();
+  $campos = "contenido,orden_capturas";
   $tabla = "capturas";
   $mensaje = "Captura(s) guardada(s) con exito.";
 
-   $i=1;
+   $i=1;$valores='';$ult_id= $crud2->getLastid();
   while($i<= $_POST['control'])
   {
     if(isset($_POST['sel'.$i]))
     {
-       $valores = $_POST['vaso'.$i];
+       //$valores = $_POST['vaso'.$i];
+         $valores = $valores."('".$_POST['vaso'.$i]."',$ult_id),";
        
-       $crud->insertar($valores,$campos,$tabla,$con->getConnection(),$mensaje);	
     }
     $i++;
+    //$crud->insertar2($valores,$campos,$tabla,$con->getConnection(),$mensaje); 
   }
 
+  $valores = trim($valores, ',');
+  $crud->insertar2($valores,$campos,$tabla,$con->getConnection(),$mensaje); 
 
-
+  echo $crud2->getLastid();
 
 
  $con->desconectar();
 
 
 ?>
+

@@ -32,13 +32,24 @@ function guardar()
 	   				    $.post('../../admin/guarda_imagenes.php',form,
 						function(data)
 						{
-	 				       
+	 				     var res = data.split(".");
+	 				     $("#oculto").val(res[1]); 
 	 				       if(data.indexOf("Captura(s) guardada(s) con exito.") >= 0)
 	 				       {
                              $("#singlebutton").attr("disabled", false);
                      	     $("#singlebutton").val("Guardar Imágenes");
 
                      	     $("#sucessfull").fadeIn("medium");
+                             
+                             if($("#tipo_proc").val()=='1')
+                              {
+                                window.location.href = "../examples/colono.php?uid="+$("#oculto").val();
+                              }
+                              else
+                              {
+                                  window.location.href = "../examples/egd.php?uid="+$("#oculto").val();
+                              }
+
                      	
 	 				       }
 	 				       else
@@ -130,7 +141,7 @@ jQuery(document).ready(function(){
 		            
 		            if(ct>1)
 		            {
-		                 $('#contenidos').append("<div class='col-md-6'><div class='box box-primary'><div class='box-header with-border'><h3 class='box-title'>Foto # "+ct+"</h3><div class='box-tools pull-right'></div></div><div class='box-body'><div class='row'><div class='col-md-12 text-center'><canvas id='foto"+ct+"' class='col-md-12 text-center'></canvas></div></div></div/><div class='box-footer text-center'><label for='sel"+ct+"'>Seleccionar para guardar&nbsp;</label><input type='checkbox' name='sel"+ct+"' id='sel"+ct+"'></div></div></div>");
+		                 $('#contenidos').append("<div class='col-md-3'><div class='box box-primary'><div class='box-header with-border'><h3 class='box-title'>Foto # "+ct+"</h3><div class='box-tools pull-right'></div></div><div class='box-body'><div class='row'><div class='col-md-12 text-center'><canvas id='foto"+ct+"' class='col-md-12 text-center img-responsive' width='200' height='100'></canvas></div></div></div/><div class='box-footer text-center'><label for='sel"+ct+"'>Seleccionar para guardar&nbsp;</label><input type='checkbox' name='sel"+ct+"' id='sel"+ct+"'></div></div></div>");
 		                   $("#contenidos2").append("<textarea id='vaso"+ct+"' name='vaso"+ct+"' rows='4' cols='50' style='display:none'></textarea>"); 
 		                   
 		            }

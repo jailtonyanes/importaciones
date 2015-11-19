@@ -42,16 +42,17 @@
 
 //insertar en la tabla
 //recuerde ponerle a cada campo del fomrmulario, el nombre del campo en la tabla
-     public function insertar($valores,$campos,$tabla,$conexion,$mensaje_exito)
+     public function insertar($valores,$campos,$tabla,$conexion,$mensaje_exito,$retorno)
       {
         
       
-         $query= "insert into $tabla ($campos) values ('$valores')";     
+         $query= "insert into $tabla ($campos) values ('$valores') RETURNING  $retorno";     
            $result= pg_query($conexion,$query);
            if($result)
              {
                echo $mensaje_exito;
-               //$this->ultimo_id = mysql_insert_id();
+               $row= pg_fetch_array($result);
+               $this->ultimo_id = $row[$retorno];
              }
              else
                {
@@ -63,25 +64,17 @@
 
        public function insertar2($valores,$campos,$tabla,$conexion,$mensaje_exito)
       {
-        echo'No se puede.';
-        /* $i=0;  $sw=0;
-         while ($i<sizeof($valores))
-       {
-         $query= "insert into $tabla ($campos) values (".$valores[$i].")";     
-           $result= mysql_query($query,$conexion);
+             $query= "insert into $tabla ($campos) values $valores";     
+           $result= pg_query($conexion,$query);
            if($result)
              {
                echo $mensaje_exito;
-               $this->ultimo_id = mysql_insert_id();
+               //$this->ultimo_id = mysql_insert_id();
              }
              else
                {
-                echo mysql_error();
+                echo pg_last_error();
                }
-            
-           $i++;
-       }
-       */
       } 
       //actualizar
       public function update($consulta,$mensaje,$conexion)

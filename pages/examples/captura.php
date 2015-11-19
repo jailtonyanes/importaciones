@@ -59,7 +59,9 @@ session_start();
           <!-- Default box -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Inspección y toma de fotos Procedimiento: <?php if($_GET['uid']=='1'){echo 'Colonoscopia';}else{'EGD';} ?></h3>
+              <h3 class="box-title">Inspección y toma de fotos. Procedimiento: <?php if($_GET['uid']=='1'){echo 'Colonoscopia';}else{echo'Esofagogastroduodenoscopia (EGD)';} ?></h3>
+              <input type="hidden" id="oculto" name="oculto">
+              <input type="hidden" id="tipo_proc" name="tipo_proc" value="<?php echo $_GET['uid'] ?>">
               <div class="box-tools pull-right">
                <!--  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                --> <!--  <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -137,7 +139,7 @@ session_start();
                                                     <div class="row">
                                                       
                                                        <div class="col-md-12 text-center"> 
-                                                         <video id="camara" class="col-md-12 text-center"  autoplay controls></video>                                                       </div>
+                                                         <video id="camara" class="col-md-12 text-center img-responsive"  autoplay controls></video>                                                       </div>
 
                                                     </div>
                                                  
@@ -156,7 +158,7 @@ session_start();
                                    <!-- -->
 
                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                                           <div class="box box-primary">
                                             <div class="box-header with-border">
                                               <h3 class="box-title">Foto # 1</h3>
@@ -169,7 +171,7 @@ session_start();
                                                     <div class="row">
                                                       
                                                        <div class="col-md-12 text-center"> 
-                                                         <canvas id="foto1" class="col-md-12 text-center" ></canvas>
+                                                         <canvas id="foto1" class="col-md-12 text-center img-responsive" width="200" height="100" ></canvas>
                                                        </div>
 
                                                     </div>

@@ -168,8 +168,16 @@ $(document).ready(function(){
 
     //ingreso_pac
     $("#ingreso_pac").click(function() {
-    	alert("Datos Guardados exitosamente.");
-        window.location.href = "../examples/captura.php?uid="+$("#proc_consult").val();
+    	
+        if($("#proc_consult").val()!=0)
+        {
+    	  alert("Datos Guardados exitosamente.");
+          window.location.href = "../examples/captura.php?uid="+$("#proc_consult").val();
+        }
+        else
+        {
+         alert("Escoja el tipo de procedimiento/consulta");
+        }
     });
 
   
