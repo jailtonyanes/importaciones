@@ -242,6 +242,12 @@ $(document).ready(function(){
         }
     });
 
+        $("#informe").click(function() {
+    	
+          window.location.href = "../examples/informe.php?uid="+$("#ocul").val()+"&uid2="+$("#sedacion").val();
+      
+    });
+
   
 });
 

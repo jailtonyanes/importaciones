@@ -302,7 +302,7 @@ session_start();
               <!-- /.box-body -->
               <div class="box-footer">
                          <div class="col-md-12 text-right"> 
-                           <input type="button"  name="ingreso_pac" id="ingreso_pac"  class="btn btn-success" value="Ver Informe">
+                           <input type="button"  name="informe" id="informe"  class="btn btn-success" value="Ver Informe">
                           
                            
                          </div>
