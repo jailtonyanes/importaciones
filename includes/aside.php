@@ -11,7 +11,7 @@
                 <a href="../examples/ingreso_pacientes.php"><i class="fa fa-user-plus"></i> <span>Ingreso de pacientes</span></a>
               </li>
 
-              <li class="treeview">
+            <!--   <li class="treeview">
                 <a href="#">
                   <i class="fa fa-file-text-o"></i>
                   <span>Exámenes</span>
@@ -23,7 +23,7 @@
                   <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o text-blue"></i> Examen 3</a></li>
                 
                 </ul>
-              </li>
+              </li> -->
                
 
 

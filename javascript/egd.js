@@ -207,6 +207,14 @@ $(document).ready(function(){
         }
     });
 
+
+        $("#informe").click(function() {
+    	
+          window.location.href = "../examples/informe2.php?uid="+$("#ocul").val()+"&uid2="+$("#sedacion").val()
+          +"&uid3="+$("#esofago").val()+"&uid4="+$("#estomago").val()+"&uid5="+$("#diag").val();
+      
+    });
+
   
 });
 

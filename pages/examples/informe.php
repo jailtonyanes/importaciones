@@ -243,19 +243,19 @@ session_start();
                            <label >Sedación: <?php echo $_GET['uid2'] ?></label>
                        </div>
                         <div class="col-md-12"> 
-                           <label >Inspección</label>
+                           <label >Inspección: <?php echo $_GET['uid3'] ?></label>
                        </div>
                         <div class="col-md-12"> 
-                           <label >Tacto Rectal</label>
+                           <label >Tacto Rectal: <?php echo $_GET['uid4'] ?></label>
                        </div>
                         <div class="col-md-12"> 
-                           <label >Colon</label>
+                           <label >Colon: <?php echo $_GET['uid5'] ?></label>
                        </div>
                         <div class="col-md-12"> 
-                           <label >Ciego</label>
+                           <label >Ciego: <?php echo $_GET['uid6'] ?></label>
                        </div>
                         <div class="col-md-12"> 
-                           <label >Diagnóstico Endoscópico</label>
+                           <label >Diagnóstico Endoscópico: <?php echo $_GET['uid7'] ?></label>
                        </div>
 
                      </div>

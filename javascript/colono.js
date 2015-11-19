@@ -244,7 +244,9 @@ $(document).ready(function(){
 
         $("#informe").click(function() {
     	
-          window.location.href = "../examples/informe.php?uid="+$("#ocul").val()+"&uid2="+$("#sedacion").val();
+          window.location.href = "../examples/informe.php?uid="+$("#ocul").val()+"&uid2="+$("#sedacion").val()
+          +"&uid3="+$("#inspeccion").val()+"&uid4="+$("#tacto_rectal").val()+"&uid5="+$("#colon").val()
+          +"&uid6="+$("#ciego").val()+"&uid7="+$("#diag").val();
       
     });
 

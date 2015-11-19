@@ -7,7 +7,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Procedimiento:EGD</title>
+    <title>Informe de Esofagogastroduodenoscopia</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -52,7 +52,7 @@ session_start();
           <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-            Esofagogastroduodenoscopia (EGD)
+           Resultados del procedimiento Esofagogastroduodenoscopia
            
             </h1>
          
@@ -66,7 +66,7 @@ session_start();
             <!-- Default box -->
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Información del paciente</h3>
+                <!-- <h3 class="box-title"></h3> -->
                 <input type="hidden" value="<?php echo $_GET['uid'] ?>" name="ocul" id="ocul">
                 <div class="box-tools pull-right">
                  <!--  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
@@ -81,106 +81,102 @@ session_start();
                     
                       <div class="row"><!-- una fila -->
                         
-                             <div class="col-md-4"> 
+                             <div class="col-md-12"> 
                                    
-                                  <div class="form-group">
-                                   <label for="exampleInputEmail1">Cédula</label>
-                                    <input type="text" class="form-control" id="p_name" name="p_name" placeholder="Primer Nombre" readonly="readonly" value="72260404">
-                                    
-                                  </div> 
+                                <img src="../../imagenes/clinica_gw_logo.jpg" height="160" width="280" class="img-thumbnail img-responsive center-block" /> 
                              </div>
-                              <div class="col-md-4"> 
-                                   
-                                  <div class="form-group">
-                                   <label for="exampleInputEmail1">Nombres y Apellidos</label>
-                                    <input type="text" class="form-control" id="s_name" name="s_name" placeholder="Segundo Nombre" readonly="readonly" value="Jailton Joel Yanes Romero">
-                                    
-                                  </div> 
-                             </div>
-                              <div class="col-md-4"> 
-                                   
-                                  <div class="form-group">
-                                   <label for="exampleInputEmail1">#Orden</label>
-                                    <input type="text" class="form-control" id="p_apellido" name="p_apellido" readonly="readonly" placeholder="Primer Apellido" value="9834728213">
-                                    
-                                  </div> 
-                             </div>
+                             
                            
                       
 
                       </div> <!-- fin de una fila -->
+                       <fieldset class="fsStyle">
+                              <legend>Datos del  paciente</legend>
                       <div class="row"><!-- una fila -->
-                        
-                             <div class="col-md-6"> 
+                       
+                             <div class="col-md-3"> 
                                    
                                   <div class="form-group">
-                                   <label for="exampleInputEmail1">#Empresa</label>
-                                    <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="Particular">
+                                   <label for="exampleInputEmail1">Nombre: Jailton Yanes</label>
+                                   <!--  <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="Particular"> -->
                                     
                                   </div> 
                              </div>
-                              <div class="col-md-6"> 
+                              <div class="col-md-3"> 
                                    
                                   <div class="form-group">
-                                   <label for="exampleInputEmail1">Fecha de captura</label>
+                                   <label for="exampleInputEmail1">Cédula: 72260404</label>
                                    
-                                    <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="<?php echo date("Y/m/d") ?>">
+                                    <!-- <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="<?php echo date("Y/m/d") ?>"> -->
                                     
                                   </div> 
                              </div>
-                              
+                            <div class="col-md-3"> 
+                                   
+                                  <div class="form-group">
+                                   <label for="exampleInputEmail1">Diagnóstico: Ninguno</label>
+                                   <!--  <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="Particular"> -->
+                                    
+                                  </div> 
+                             </div>
+                              <div class="col-md-3"> 
+                                   
+                                  <div class="form-group">
+                                   <label for="exampleInputEmail1">Premedicación: Ninguna</label>
+                                   
+                                    <!-- <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="<?php echo date("Y/m/d") ?>"> -->
+                                    
+                                  </div> 
+                             </div> 
                           
                       
 
                       </div> <!-- fin de una fila -->
+                       </fieldset>
+                        
                        <div class="row"><!-- una fila -->
                         
-                             <div class="col-md-6"> 
+                             <div class="col-md-3"> 
                                    
                                   <div class="form-group">
-                                   <label for="exampleInputEmail1">Procedencia</label>
-                                    <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="Particular">
-                                    
+                                   <label for="exampleInputEmail1">Fecha: <?php echo date('Y-m-d'); ?></label>
+                                   <!--  <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="Particular">
+                                    --> 
                                   </div> 
                              </div>
-                              <div class="col-md-6"> 
+                              <div class="col-md-3"> 
                                    
                                   <div class="form-group">
-                                   <label for="exampleInputEmail1">Médico Remitente</label>
+                                   <label for="exampleInputEmail1">Número  de la orden: 23423479812</label>
                                    
-                                    <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="Juan Rico">
-                                    
+                                   <!--  <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="Juan Rico">
+                                    --> 
                                   </div> 
                              </div>
+                                    <div class="col-md-3"> 
+                                   
+                                  <div class="form-group">
+                                   <label for="exampleInputEmail1">Médico: Juan Rico</label>
+                                   <!--  <input type="text" readonly="readonly" class="form-control" id="f_nac" name="f_nac" placeholder="Fecha de nacimiento" value="Particular">
+                                    --> 
+                                  </div> 
+                             </div>
+                              <div class="col-md-3"> 
+                                   
+                                  <div class="form-group">
+                                   <label for="exampleInputEmail1">Procedencia: Particular</label>
+                                   
+                                   <!--  <input type="text" readonly="readonly" class="form-control" id="edad" name="edad" placeholder="Edad" value="Juan Rico">
+                                    --> 
+                                  </div> 
+                             </div>
+                              
                               
                           
                       
 
                       </div> <!-- fin de una fila -->
-                      <div class="row"><!-- una fila -->
-                        
-                             <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                   <label for="exampleInputEmail1">Diagnóstico</label>
-                                    <input type="text"  class="form-control" id="f_nac" name="f_nac" >
-                                    
-                                  </div> 
-                             </div>
-                              <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                   <label for="exampleInputEmail1">Premedicación</label>
-                                   
-                                    <input type="text"  class="form-control" id="edad" name="edad">
-                                    
-                                  </div> 
-                             </div>
-                              
-                          
-                      
-
-                      </div> <!-- fin de una fila -->
+                   
                       
 
 
@@ -188,6 +184,7 @@ session_start();
 
                </div>
               <!-- /.box-body -->
+
             <!--   <div class="box-footer">
                          <div class="col-md-12 text-right"> 
                            <input type="button"  name="botonIniciar" id="botonIniciar" class="btn btn-primary" value="Siguiente">
@@ -196,7 +193,15 @@ session_start();
                          </div>
               </div> --><!-- /.box-footer-->
             </div><!-- /.box -->
-            <div class="row" id="volcar"><!-- una fila -->
+           
+               <!-- Default box -->
+            <div class="box box-danger">
+              <div class="box-header with-border">
+                <h3 class="box-title">Imágenes Halladas</h3>
+              
+              </div>
+              <div class="box-body">
+                   <div class="row" id="volcar"><!-- una fila -->
                 <?php
                    include('../../config/conf_postgre.php');
                    include('../../classes/con_postgre.php');
@@ -207,30 +212,16 @@ session_start();
                    $crud = new Crud();
 
 
-                    $crud->setConsulta("select * from capturas where orden_capturas = '$_GET[uid]'");
+                    $crud->setConsulta("select * from capturas where orden_capturas = '$_GET[uid]' and enviar_informe ='si'");
                     $datos = $crud->seleccionar($con->getConnection());
                        $i=0;
                      while ($i<sizeof($datos))
                      {
                   ?>     
                        <div class="col-md-3">
-                          <div class="box box-primary">
-                              <div class="box-header with-border">
-                                <h3 class="box-title">Foto # <?php echo $i +1 ?></h3>
-                              </div>
-                              <div class="box-body">
-                                <div class="row">
-                                  <div class="col-md-12 text-center">
-                                   <img src="<?php echo $datos[$i]['contenido'] ?>" height="100" width="200" class="img-responsive" alt="imgcolono">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="box-footer text-center">
-                                <label for="sel1"> Seleccionar para el informe  </label>
-                                <input id="sel<?php echo $datos[$i]['id'] ?>" name="sel<?php echo $datos[$i]['id'] ?>" value="<?php echo $datos[$i]['id'] ?>" type="checkbox" id="sel<?php echo $datos[$i]['id'] ?>" onclick=" javascript:marcar(this.id)">
-
-                              </div>
-                          </div>
+                         
+                                   <img src="<?php echo $datos[$i]['contenido'] ?>" height="100" width="200" class="img-thumbnail img-responsive center-block" alt="imgcolono">
+                            
                        </div>
                   <?php
                        $i++; 
@@ -240,63 +231,30 @@ session_start();
                     $con->desconectar();
                 ?>             
 
-            </div> <!-- fin de una fila -->
-               <!-- Default box -->
-            <div class="box box-danger">
-              <div class="box-header with-border">
-                <h3 class="box-title">Observaciones</h3>
-              
+            </div> <!-- fin de una fila -->               
               </div>
-              <div class="box-body">
-
-                        <div class="row"><!-- una fila -->
-                             <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                     <label>Sedación</label>
-                                     <textarea class="form-control" name="sedacion" id="sedacion"  placeholder="Escriba sus observaciones" rows="3"></textarea>
-                                  </div> 
-                             </div>
-                              <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                     <label>Esófago</label>
-                                     <textarea class="form-control" name="esofago" id="esofago" placeholder="Escriba sus observaciones" rows="3"></textarea>
-                                  </div> 
-                             </div>
-                       
-                        </div> <!-- fin de una fila -->  
-                         <div class="row"><!-- una fila -->
-                             <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                     <label>Estómago</label>
-                                     <textarea class="form-control" name="estomago" id="estomago" placeholder="Escriba sus observaciones" rows="3"></textarea>
-                                  </div> 
-                             </div>
-                              <div class="col-md-6"> 
-                                   
-                                  <div class="form-group">
-                                     <label>Diagnóstico</label>
-                                     <textarea class="form-control" name="diag" id="diag" placeholder="Escriba sus observaciones" rows="3"></textarea>
-                                  </div> 
-                             </div>
-                       
-                        </div> <!-- fin de una fila -->  
-                       
-                       
-
-
-
-
-               </div>
               <!-- /.box-body -->
-              <div class="box-footer">
-                         <div class="col-md-12 text-right"> 
-                           <input type="button"  name="informe" id="informe"  class="btn btn-success" value="Ver Infrome">
-                          
-                           
-                         </div>
+              <div class="box-footer ">
+               
+                    <fieldset class="fsStyle">
+                       <legend>Comentarios</legend>
+                     <div class="row" id="volcar"><!-- una fila -->
+                       <div class="col-md-12"> 
+                           <label >Sedación: <?php echo $_GET['uid2'] ?></label>
+                       </div>
+                        <div class="col-md-12"> 
+                           <label >Esfófago: <?php echo $_GET['uid3'] ?></label>
+                       </div>
+                        <div class="col-md-12"> 
+                           <label >Estómago: <?php echo $_GET['uid4'] ?></label>
+                       </div>
+                        <div class="col-md-12"> 
+                           <label >Diagnóstico: <?php echo $_GET['uid5'] ?></label>
+                       </div>
+                      
+
+                     </div>
+                     </fieldset>   
               </div><!-- /.box-footer-->
             </div><!-- /.box -->
 
@@ -332,7 +290,7 @@ session_start();
 
     <!-- jQuery 2.1.4 -->
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-      <script type="text/javascript" src="../../javascript/egd.js"></script>
+      <script type="text/javascript" src="../../javascript/colono.js"></script>
 
     <!-- Bootstrap 3.3.5 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
