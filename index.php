@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php
-  include('config/conf_postgre.php');
-  include('classes/con_postgre.php');
-  include('classes/crud_postgre.php');
+  include('_include/configuration.php');
+  include('_classes/conectar.php');
+  include('_classes/crud.php');
 
-  $con = new Connection($server,$port,$dbname,$user,$password);
+  $con = new Coneccion($server,$user,$password,$dbname);
   $con->conectar();
   $crud = new Crud();
   
@@ -13,20 +13,48 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
   
   if(isset($_POST['join']))
   {
-     $crud->setConsulta("select * from usuarios where usuario = '$_POST[user]' and password = '$_POST[password]'");
-     $datos1=$crud->seleccionar($con->getConnection());
+     $crud->setConsulta("select * from usuario where nick = '$_POST[user]' and password = '$_POST[password]' and estado = 'Activo'");
+     $datos1=$crud->seleccionar($con->getConection());
      
       if($crud->getTuplas()>0)
       {
+          if($datos1[0]['cambio_password']==0)
+          {   
+            $_SESSION['user_authorized'] = true;
+            $_SESSION['nom'] = $datos1[0]['nombre'];;
+            $_SESSION['apel'] = $datos1[0]['apellido'];
+            $_SESSION['password'] = $datos1[0]['password'];
+            $_SESSION['usuario'] = $datos1[0]['nick'];
+            $_SESSION['rol'] = $datos1[0]['perfil'];
+            $_SESSION['id'] = $datos1[0]['id'];
+            $_SESSION['cambio'] = $datos1[0]['cambio_password'];
+           ?>
          
-        $_SESSION['user_authorized'] = true;
-        $_SESSION['nombres'] = $datos1[0]['nombres'];;
-        $_SESSION['apellidos'] = $datos1[0]['apellidos'];
-        $_SESSION['password'] = $datos1[0]['password'];
-        $_SESSION['usuario'] = $datos1[0]['usuario'];
-        $_SESSION['rol'] = $datos1[0]['rol'];
+            <script type="text/javascript">
+               window.location.href = "pages/examples/usuarios.php";
 
-        header("Location: pages/examples/ingreso_pacientes.php");
+            </script>
+            
+          <?php
+          }
+          else
+          {
+            $_SESSION['user_authorized'] = true;
+            $_SESSION['nom'] = $datos1[0]['nombre'];;
+            $_SESSION['apel'] = $datos1[0]['apellido'];
+            $_SESSION['password'] = $datos1[0]['password'];
+            $_SESSION['usuario'] = $datos1[0]['nick'];
+            $_SESSION['rol'] = $datos1[0]['perfil'];
+            $_SESSION['id'] = $datos1[0]['id'];
+            $_SESSION['cambio'] = $datos1[0]['cambio_password'];
+           ?>
+                <script type="text/javascript">
+               window.location.href = "pages/examples/cambio_password.php";
+
+            </script>
+            
+          <?php
+          }
       }
 
   }
@@ -39,7 +67,7 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>SM | IMPORTS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -63,7 +91,7 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="../../index2.html"><b>SM</b> IMPORTS</a>
       </div><!-- /.login-logo -->
  <?php
     if($crud->getMensaje()=='No hay registros asociados a la consulta.')
@@ -79,7 +107,7 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
  
   
       <div class="login-box-body">
-        <p class="login-box-msg">Ingrese para iniciar su sesión</p>
+        <p class="login-box-msg">Inicio de sesión</p>
         <form action="" method="post" id="fr_login" name="fr_login">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" id="user" name="user" placeholder="Usuario">

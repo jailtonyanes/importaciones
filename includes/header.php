@@ -1,9 +1,9 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A</b>LT</span>
+          <span class="logo-mini"><b>SM</b> IMP</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Admin</b>LTE</span>
+          <span class="logo-lg"><b>SM</b> IMPORTS</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -23,7 +23,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   
-                  <span class="hidden-xs"><?php echo $_SESSION['nombres'].' '.$_SESSION['apellidos'] ?></span>
+                  <span class="hidden-xs"> <?php echo 'Bienvenido(a)  '. $_SESSION['nom'].' '.$_SESSION['apel'] ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -33,8 +33,8 @@
                     <br/>
 
                     <p>
-                       <?php echo $_SESSION['nombres'].' '.$_SESSION['apellidos'] ?>
-                       <small><?php if($_SESSION['rol']=='1'){echo 'Administrador';}  ?></small> 
+                       <?php echo $_SESSION['nom'].' '.$_SESSION['apel'] ?>
+                       <small><?php echo $_SESSION['rol'];  ?></small> 
                     </p>
                   </li>
                   <!-- Menu Body -->

@@ -6,7 +6,7 @@
    protected $ultimo_id;
    protected $num_rows;
    protected $mensaje;
-   //fijar la consulta
+
    public function setConsulta($consulta1)
     {
         $this->consulta = $consulta1;
@@ -15,26 +15,27 @@
  //seleccionar
  public function seleccionar($conexion)
     {
-      $query=$this->consulta;
-      $result=pg_query($conexion,$query);
+        $query=$this->consulta;
+      $result=mysql_query($query,$conexion);
+      
       if($result)
        {
-         $this->num_rows=pg_num_rows($result);
+         $this->num_rows=mysql_num_rows($result);
            if($this->num_rows>0)
             { 
-               while( $row= pg_fetch_assoc($result))
+               while( $row= mysql_fetch_assoc($result))
                {
                 $this->registros[] = $row;
                }
             }
             else
             {
-              $this->mensaje ='No hay registros asociados a la consulta.';
+              $this->mensaje = 'No hay registros asociados a la consulta.';
             }
        } 
        else
         {
-              $this->mensaje =  pg_last_error();
+       echo mysql_error();
         }
    
      return  $this->registros;
@@ -42,53 +43,62 @@
 
 //insertar en la tabla
 //recuerde ponerle a cada campo del fomrmulario, el nombre del campo en la tabla
-     public function insertar($valores,$campos,$tabla,$conexion,$mensaje_exito,$retorno)
+     public function insertar($valores,$campos,$tabla,$conexion,$mensaje_exito)
       {
-        
-      
-         $query= "insert into $tabla ($campos) values ('$valores') RETURNING  $retorno";     
-           $result= pg_query($conexion,$query);
+         $i=0;  $sw=0;
+         while ($i<sizeof($valores))
+       {
+         $query= "insert into $tabla ($campos) values (".$valores[$i].")";     
+           $result= mysql_query($query,$conexion);
            if($result)
              {
                echo $mensaje_exito;
-               $row= pg_fetch_array($result);
-               $this->ultimo_id = $row[$retorno];
+               $this->ultimo_id = mysql_insert_id();
              }
              else
                {
-                echo pg_last_error();
+                echo mysql_error();
                }
             
-      
+           $i++;
+       }
       }
 
        public function insertar2($valores,$campos,$tabla,$conexion,$mensaje_exito)
       {
-             $query= "insert into $tabla ($campos) values $valores";     
-           $result= pg_query($conexion,$query);
+        echo'No se puede.';
+        /* $i=0;  $sw=0;
+         while ($i<sizeof($valores))
+       {
+         $query= "insert into $tabla ($campos) values (".$valores[$i].")";     
+           $result= mysql_query($query,$conexion);
            if($result)
              {
                echo $mensaje_exito;
-               //$this->ultimo_id = mysql_insert_id();
+               $this->ultimo_id = mysql_insert_id();
              }
              else
                {
-                echo pg_last_error();
+                echo mysql_error();
                }
+            
+           $i++;
+       }
+       */
       } 
-      //actualizar
+
       public function update($consulta,$mensaje,$conexion)
       {
           
-        $query =$consulta;
-         $result= pg_query($conexion,$query);
+         $query =$consulta;
+         $result= mysql_query($query,$conexion);
          if($result)
          {
           echo $mensaje;
          }
          else
          {
-           echo pg_last_error();
+           echo mysql_error();
          }
 
       } 
@@ -106,14 +116,14 @@
               $where = '';
              }
          $query = "delete from $tabla $where $condicion ";
-         $result= pg_query($conexion,$query);
+         $result= mysql_query($query,$conexion);
          if($result)
           {
             echo $mensaje;
           }  
           else
              {
-              echo pg_last_error();
+              echo mysql_error();
              }
 
        }
@@ -129,11 +139,10 @@
       return $this->num_rows;
     }
 
-    public function getMensaje()
+   public function getMensaje()
     {
       return $this->mensaje;
     }
-
 
  }
 
