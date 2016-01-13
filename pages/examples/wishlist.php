@@ -1,5 +1,13 @@
 <?php
  include("../../includes/permisions.php");
+   include('../../_include/configuration.php');
+  include('../../_classes/conectar.php');
+  include('../../_classes/crud.php');
+
+  $con = new Coneccion($server,$user,$password,$dbname);
+  $con->conectar();
+  $crud = new Crud();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,20 +67,48 @@
 
           
 <!-- Ventana modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-  </div>
+<div class="modal fade" id="miventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           <h4>Iinfo del cliente</h4>
+         </div>
+         <div class="modal-body">
+                               
+                                <div class="row"> 
+                                  <div class="col-md-12">       
+                                            <div class="form-group">
+                                                <label for="provincia">Seleccione Cliente:</label>
+                                               <select   class="form-control" id="cliente" name="cliente">
+                                                     <option value="Escoja opción" slected="selected">Escoja opción</option>
+                                                    <?php
+                                                         $crud->setConsulta("SELECT id,nombre,apellido,cip_ruc FROM cliente ORDER BY nombre ASC, apellido ASC");
+                                                         $datos1 = $crud->seleccionar($con->getConection());
+                                                         $i=0;
+                                                         while ($i<sizeof($datos1))
+                                                         {   
+                                                     ?>
+                                                          <option value="<?php echo $datos1[$i]['cip_ruc'].'**'.$datos1[$i]['nombre'].' '.$datos1[$i]['apellido'] ?>"><?php echo $datos1[$i]['cip_ruc'].'**'.$datos1[$i]['nombre'].' '.$datos1[$i]['apellido'] ?></option>
+                                                     <?php
+                                                           $i++;
+                                                          $con->desconectar();
+                                                         } 
+                                                     ?>
+                                               </select>
+                                            </div> 
+                                   </div>         
+                               </div>             
+                                        
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-primary" onclick="sacar_info_cli()">Aceptar</button>
+         </div>
+      </div>
+    </div>                                       
 </div>
-<!-- fin ventana modal -->
+
+
 
           <!-- Main content -->
 
@@ -94,20 +130,20 @@
                                   <div class="row"><!-- una fila -->
                                       <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">SMI:</label>
-                                               <input type="text"  class="form-control" id="smi" name="smi" placeholder="SMI">
+                                                <label for="smi">SMI:</label>
+                                               <input type="text" readonly  class="form-control" id="smi" name="smi" placeholder="SMI" data-toggle="modal" data-target="#miventana">
                                             </div> 
                                       </div>  
                                           <div class="col-sm-4">
                                            <div class="form-group">
                                                 <label for="cip_ruc">CIP/RUC:</label>
-                                               <input type="text"  class="form-control" id="cip_ruc" name="cip_ruc" placeholder="CIP/RUC">
+                                               <input type="text" readonly  class="form-control" id="cip_ruc" name="cip_ruc" placeholder="CIP/RUC">
                                             </div> 
                                       </div> 
                                           <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">A NOMBRE DE:</label>
-                                               <input type="text"  class="form-control" id="cliente" name="cliente" placeholder="A nombre de">
+                                                <label for="cliente2">A NOMBRE DE:</label>
+                                               <input type="text" readonly  class="form-control" id="cliente2" name="cliente2" placeholder="A nombre de">
                                             </div> 
                                       </div> 
 
@@ -115,20 +151,20 @@
                                     <div class="row"><!-- una fila -->
                                       <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">DIRECCIÓN:</label>
-                                               <input type="text"  class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+                                                <label for="direccion">DIRECCIÓN:</label>
+                                               <input type="text" readonly  class="form-control" id="direccion" name="direccion" placeholder="Dirección">
                                             </div> 
                                       </div>  
                                           <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">PROVINCIA:</label>
-                                               <input type="text"  class="form-control" id="provincia" name="provincia" placeholder="Provincia">
+                                                <label for="provincia">PROVINCIA:</label>
+                                               <input type="text" readonly  class="form-control" id="provincia" name="provincia" placeholder="Provincia">
                                             </div> 
                                       </div> 
                                           <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">DISTRITO:</label>
-                                               <input type="text"  class="form-control" id="distrito" name="distrito" placeholder="Distrito">
+                                                <label for="distrito">DISTRITO:</label>
+                                               <input type="text" readonly  class="form-control" id="distrito" name="distrito" placeholder="Distrito">
                                             </div> 
                                       </div> 
                                        
@@ -136,20 +172,20 @@
                                     <div class="row"><!-- una fila -->
                                       <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">TELÉFONO 1</label>
-                                               <input type="text"  class="form-control" id="tel1" name="tel1" placeholder="Telefono 1">
+                                                <label for="tel1">TELÉFONO 1</label>
+                                               <input type="text" readonly  class="form-control" id="tel1" name="tel1" placeholder="Telefono 1">
                                             </div> 
                                       </div>  
                                           <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">TELÉFONO 2</label>
-                                               <input type="text"  class="form-control" id="tel2" name="tel2" placeholder="Telefono 2">
+                                                <label for="tel2">TELÉFONO 2</label>
+                                               <input type="text" readonly  class="form-control" id="tel2" name="tel2" placeholder="Telefono 2">
                                             </div> 
                                       </div> 
                                           <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="cip_ruc">E-MAIL:</label>
-                                               <input type="text"  class="form-control" id="email" name="email" placeholder="E-mail">
+                                                <label for="email">E-MAIL:</label>
+                                               <input type="text" readonly  class="form-control" id="email" name="email" placeholder="E-mail">
                                             </div> 
                                       </div> 
                                        
@@ -160,10 +196,12 @@
                           <!-- /.box-body -->
                           <div class="box-footer">
                                      <div class="col-md-12 text-right"> 
-                                       <input type="button"  name="cotizar" id="cotizar"  class="btn btn-primary" value="Generar Cotización">
+                                       <button class="btn btn-primary"   > Abrir ventana </button>
                                       
                                        
                                      </div>
+                                     
+
                           </div><!-- /.box-footer-->
                         </div><!-- /.box -->
 
@@ -312,7 +350,36 @@
 
      <script type="text/javascript">
           
-        
+        function sacar_info_cli()
+        {
+           var user= $("#cliente").val().split("**",1);
+          
+
+           $.get('../../admin/xml_clientes_ced.php?ocul='+user,{
+            type: 'xml'
+          },
+          function(xml){
+             $("#smi").val('SMI-'+$(xml).find('id').text());
+           $("#cip_ruc").val($(xml).find('cip_ruc').text());
+           $("#cliente2").val($(xml).find('nombre').text()+' '+$(xml).find('apellido').text());
+          
+           $("#direccion").val($(xml).find('direccion').text());
+           $("#provincia").val($(xml).find('provincia').text());
+           $("#distrito").val($(xml).find('distrito').text());
+           $("#tel1").val($(xml).find('telefono1').text());
+           $("#tel2").val($(xml).find('telefono2').text());
+           $("#email").val($(xml).find('email').text());
+          // $("#ingreso_pac").val('Actualizar');
+           
+
+          });
+           $('#miventana').modal('hide');
+        }
+
+       function volcar()
+       {
+         $('#miventana').modal('hide');  
+       }
 
           function validar_campos()
             {
@@ -468,9 +535,9 @@
 
 
             $(document).ready(function(){
-             
-                 
-
+                  
+         
+                   //fin mostrar
                   $("#close_error").bind('click',function(){
                      $("#error_p").fadeOut('medium');
                   });
