@@ -130,7 +130,7 @@
                                   <div class="row"><!-- una fila -->
                                       <div class="col-sm-4">
                                            <div class="form-group">
-                                                <label for="smi">SMI:</label>
+                                                <label for="smi">SMI (Click en este campo):</label>
                                                <input type="text" readonly  class="form-control" id="smi" name="smi" placeholder="SMI" data-toggle="modal" data-target="#miventana">
                                             </div> 
                                       </div>  
@@ -196,7 +196,7 @@
                           <!-- /.box-body -->
                           <div class="box-footer">
                                      <div class="col-md-12 text-right"> 
-                                       <button class="btn btn-primary"   > Abrir ventana </button>
+                                       <button class="btn btn-primary" onclick="crea_cotizacion()"> Crear cotización </button>
                                       
                                        
                                      </div>
@@ -220,7 +220,12 @@
                       <div class="col-md-12">
                         <div class="box box-danger">
                           <div class="box-header with-border">
-                            <h3 class="box-title">Lista de items</h3>
+                            <h3 class="box-title">Cotizacion Nro: </h3>&nbsp;
+                            <input type="text" id="refe" name="refe"  readonly placeholder="Nro de cotización">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<h3 class="box-title">Fecha: </h3>
+                            <input type="text" id="fech" name="fech"  readonly placeholder="Fecha de la cotización">
+                             &nbsp;&nbsp;&nbsp;&nbsp;<h3 class="box-title">Cantidad de items: </h3>
+                            <input type="text" id="contador" name="contador"  readonly value="1" >
                             <div class="box-tools pull-right">
                              <!--  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                              --> <!--  <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -234,53 +239,69 @@
                                      <div class="col-sm-12">
                                         <!-- tabla -->
                                          
-
+                                       <div style="">
                                          <table class="table table-bordered table-striped table-condensed">
-                                           <tr>
-                                             <th class="text-center">FECHA</th>
-                                             <th class="text-center">SMI</th>
-                                             <th class="text-center">TIPO DE SERVICIO</th>
-                                             <th class="text-center">CANTIDAD</th>
-                                             <th class="text-center">DESCRIPCIÓN</th>
-                                             <th class="text-center">WEB-LINK</th>
-                                             <th class="text-center">PRECIO (USD)</th>
-                                             <th class="text-center">SHIPPING (USD)</th>
-                                             <th class="text-center">ACCIONES</th>
+                                           <thead>
+                                               <tr>
+                                                   <th class="text-center">ITEM</th>
+                                                   <th class="text-center">TIPO DE SERVICIO</th>
+                                                     <th class="text-center">DESCRIPCIÓN</th>
+                                                   <th class="text-center">WEB-LINK</th>
+                                                   <th class="text-center">PRECIO ARTÍCULO</th>
+                                                   <th class="text-center">CANTIDAD</th>
+                                                 
+                                                   
+                                                   <th class="text-center">SHIPPING</th>
+                                                   <th class="text-center">PESO</th>
+                                                   <th class="text-center">STATE TAX</th>
+                                                   <th class="text-center">PRECIO WEB</th>
 
+                                                   <th class="text-center">FLETE SMI</th>
+                                                   <th class="text-center">TOTAL</th>
+                                                   <th class="text-center">ACCIONES</th>
+                                               </tr>
+                                            </thead>   
+                                          <tbody id="cont_list"> 
+                                           <tr id="f_1">
+                                             <td align="right"><input type="text" readonly class="form-control" id="item_1" name="item_1" value="1" ></td>
+                                             <td align="left"> 
+                                              <select   class="form-control" id="tipo_serv_1" name="tipo_serv_1" >
+                                                 <option value="Escoja opción">Escoja opción</option>
+                                                 <option value="Compras por internet">Compras por internet</option>
+                                                 <option value="Transporte de carga aérea">Transporte de carga aérea</option>
+                                              </select>
+                                             </td>
+                                             <td align="left"><textarea class="form-control"   rows="2" id="descrip_ar_1" name="descrip_ar_1"></textarea></td>
+                                             <td align="left"><textarea class="form-control"   rows="2" id="web_link_1" name="web_link_1"></textarea></td>
+                                                         <td align="right"><input type="text"  class="form-control" id="precio_1" name="precio_1" ></td>
+                                             <td align="right"><input type="text"  class="form-control" id="cantidad_1" name="cantidad_1" ></td>
+                                            
+                                
+                                             <td align="right"><input type="text"  class="form-control" id="costo_ship_1" name="costo_ship_1" ></td>
+                                             <td align="right"><input type="text"  class="form-control" id="peso_1" name="peso_1" ></td>
+                                              <td align="left"> 
+                                              <select   class="form-control" id="state_tax_1" name="state_tax_1" onchange="costo_traida(1)" >
+                                                 <option value="Escoja opción">Escoja opción</option>
+                                                 <option value="SI">SI</option>
+                                                 <option value="NO">NO</option>
+                                              </select>
+                                             </td>
+                                             <td align="right"><input type="text"  class="form-control" id="pa_1" name="pa_1" readonly ></td>
+                                              
+                                           
+                                             <td align="right"><input type="text"  class="form-control" id="flete_1" name="flete_1" readonly ></td>
+                                             <td align="right"><input type="text"  class="form-control" id="subtotal_1" name="subtotal_1" readonly ></td>
 
-                                             
-                                             
-                                           </tr>
-                                           <tr>
-                                             <td align="left">2016-01-23</td>
-                                             <td align="left">SMI-1</td>
-                                             <td align="left">Compras por internet</td>
-                                             <td align="right">2</td>
-                                             <td align="left">Winterforce LT Winter Radial Tire</td>
-                                             <td align="left">http://www.pricemachine.com/FIRE-STONE-Winterforce-LT-6118730757/psmus/prices-html</td>
-                                             <td align="right">196</td>
-                                             <td align="right">0</td>
-                                             <td align="center"><a style="cursor:pointer" class="fa  fa-plus-square-o" title="Nuevo">&nbsp;&nbsp;<a style="cursor:pointer" class="fa fa-pencil-square-o" title="Editar"></a>&nbsp;&nbsp;
-                                               <a style="cursor:pointer" class="fa fa-minus-circle" title="Eliminar">
+                                             <td align="center"><a style="cursor:pointer" class="fa  fa-plus-square-o" title="Añadir" onclick="agrega()"></a>&nbsp;&nbsp;
+                                               <a style="cursor:pointer" class="fa fa-minus-circle" title="Eliminar" onclick="elimina(this.id)">
                                              </td>
                                              
                                            </tr>
-                                            <tr>
-                                             <td align="left">2016-01-23</td>
-                                             <td align="left">SMI-1</td>
-                                             <td align="left">Compras por internet</td>
-                                             <td align="right">1</td>
-                                             <td align="left">Nitrus bottle (10 lbs)</td>
-                                             <td align="left">http://www.summitracing.com/int/search/product-line/nos-nitrous-bottles?N=301170%2B4294886498</td>
-                                             <td align="right">234.95</td>
-                                             <td align="right">0</td>
-                                                     <td align="center"><a style="cursor:pointer" class="fa  fa-plus-square-o" title="Nuevo" onclick="modal_show()">&nbsp;&nbsp;<a style="cursor:pointer" class="fa fa-pencil-square-o" title="Editar"></a>&nbsp;&nbsp;
-                                               <a style="cursor:pointer" class="fa fa-minus-circle" title="Eliminar">
-                                             </td>
-                                             
-                                           </tr>
+                                            
+                                         </tbody>
+
                                          </table>
-
+                                        </div>  
 
                                         <!-- fin tabla -->
                                       </div>   
@@ -295,7 +316,7 @@
                                      </div> -->
                           </div><!-- /.box-footer-->
                         </div><!-- /.box -->
-
+                     
                   </div>
                   
 
@@ -314,9 +335,10 @@
   </div>
       <!-- /.content-wrapper -->
 
-      <footer class="main-footer">
+     <footer class="main-footer">
+
        <?php include('../../includes/footer.php') ?>
-      </footer>
+      </footer> 
 
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
@@ -349,7 +371,139 @@
      <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
 
      <script type="text/javascript">
+        
+       
+         //recorrer los hijos de la tabla
+         
+         function recorrido()
+         {
+               //inicio funcion
+
+                  $("table tr").each(function (index) 
+                    { 
+                        alert(index);
+                    }) 
+
+               //fin funcion
+
+
+         }
+
+
+         //fin recorrer los hijos de la tabla
+
+
+       //para manejar los items del grid
           
+          function agrega()//agregar elementos al grid
+          {
+            $("#contador").val(parseInt($("#contador").val())+1);
+            var control = parseInt($("#contador").val());
+
+            //elementos para añadir a la tabla por medio del append
+             var tr_abre = "<tr id=f_"+control+">";
+             var td1="<td align='right'><input type='text' readonly class='form-control' id='item_"+control+"' name='item_"+control+"' value='"+control+"' ></td>"+
+             "<td align='left'><select class='form-control id='tipo_serv"+control+"' name='tipo_serv"+control+"' >"+
+                                                 "<option value='Escoja opción'>Escoja opción</option>"+
+                                                 "<option value='Compras por internet'>Compras por internet</option>"+
+                                                 "<option value='Transporte de carga aérea'>Transporte de carga aérea</option>"+
+                                              "</select></td>";
+             var td2="<td align='left'><textarea class='form-control'   rows='2' id='descrip_ar"+control+"' name='descrip_ar"+control+"'></textarea></td>"+
+                                             "<td align='left'><textarea class='form-control'   rows='2' id='web_link"+control+"' name='web_link"+control+"'></textarea></td>"+
+                                              "<td align='right'><input type='text'  class='form-control' id='precio_"+control+"' name='precio_"+control+"' ></td>"+
+                                             "<td align='right'><input type='text'  class='form-control' id='cantidad_"+control+"' name='cantidad_"+control+"' ></td>"+
+                                            
+                                             "<td align='right'><input type='text'  class='form-control' id='costo_ship_"+control+"' name='costo_ship_"+control+"' ></td>"+
+                                             "<td align='right'><input type='text'  class='form-control' id='peso_"+control+"' name='peso_"+control+"' ></td>"+
+
+                                                "<td align='left'>"+ 
+                                              "<select   class='form-control' id='state_tax"+control+"' name='state_tax"+control+"' onchange='costo_traida("+control+")'>"+
+                                                 "<option value='Escoja opción'>Escoja opción</option>"+
+                                                 "<option value='SI'>SI</option>"+
+                                                 "<option value='NO'>NO</option>"+
+                                              "</select>"+
+                                             "</td>"+
+
+                                             "<td align='right'><input type='text'  class='form-control' id='pa_"+control+"' name='pa_"+control+"' ></td>"+
+                                             "<td align='right'><input type='text'  class='form-control' id='flete_"+control+"' name='flete_"+control+"' ></td>"+
+                                             "<td align='right'><input type='text'  class='form-control' id='subtotal_"+control+"' name='subtotal_"+control+"' ></td>"+
+                                              "<td align='center'><a style='cursor:pointer' class='fa  fa-plus-square-o' title='Añadir' onclick='agrega()'>&nbsp;&nbsp;"+
+                                               "<a style='cursor:pointer' class='fa fa-minus-circle' title='Eliminar' onclick='elimina("+control+")'>"+
+                                             "</td>";                                 
+
+             var tr_cierra = "</tr>";
+
+            $("#cont_list").append(tr_abre+td1+td2+tr_cierra);
+           
+             
+          }
+
+          function elimina(user)//elimina elementos del grid
+          {
+             if(parseInt($("#contador").val())>1)
+             {
+                $( "#f_"+user).remove();
+                $("#contador").val(parseInt($("#contador").val())-1);
+             }
+          }
+       
+       //fin para manejar los items del grid
+
+          function crea_cotizacion()
+          {
+                 if($("#smi").val()=='')
+                 {
+                    alert('Debe escoger el SMI del cliente.');
+                 }
+                 else
+                 { 
+                     var users = $("#smi").val().split("-",2);
+
+
+                      if(confirm('Desea crear la cotizaci\u00f3n?'))
+                      { 
+
+                        $.post('../../admin/crear_cotizaciones.php',{
+
+                            condition: users[1]
+
+                          },
+
+                          function(data){
+
+                                 if(jQuery.trim(data)=='Solicitud creada con exito.')
+                                 {
+                                     //xml para sacar el número de la cotización
+                                             $.get('../../admin/xml_num_cot.php',{
+                                              type: 'xml'
+                                            },
+                                            function(xml){
+                                             
+                                             // sacar la fecha
+                                              var f = new Date();
+                                            
+                                             // fin de la fecha
+ 
+
+                                             $("#refe").val($(xml).find('id').text());
+                                             $("#fech").val(f.getFullYear()+'-'+(f.getMonth()+1)+'-'+f.getDate());
+                                            // $("#ingreso_pac").val('Actualizar');
+                                             
+
+                                            });   
+
+                                     //
+                                 }
+                                            
+
+                          }
+
+                        );
+                      }
+                  }    
+          }
+
+
         function sacar_info_cli()
         {
            var user= $("#cliente").val().split("**",1);
@@ -532,6 +686,117 @@
                        validar_campos();     
                  }
            } 
+
+
+
+//elementos de la calculadora
+            function costo_traida(user)
+            {
+               var q= parseInt($("#cantidad_"+user).val());
+               var precio = parseFloat($("#precio_"+user).val());
+               var st_t =0;
+               var ship = parseFloat($("#costo_ship_"+user).val());
+               if($("#state_tax_"+user).val()=='SI')
+               {
+                 var st_t = 0.07;
+               }
+               //var precio_web = parseFloat($("#costo_ship_"+user).val());
+
+               $("#pa_"+user).val( ( (q*precio+ship)*st_t)+ (q*precio+ship) );
+
+               //alert($("#pa_"+user).val());
+              fletesmi(user);
+              recorrido();
+
+            }
+
+            function fletesmi(user)
+            {
+                var pa = parseFloat($("#pa_"+user).val());
+                var peso = parseFloat($("#peso_"+user).val());
+                var se =0;
+                var sc = 6;
+
+                //calcular servicio de entrega
+                  if(peso < 2)
+                  {
+                    se =0;
+                  }
+                  else
+                  {
+                    if(peso == 2)
+                    {
+                        se = 6.5;
+                    }
+                    else
+                    {
+                      if(peso > 2 && peso < 100 )
+                      {
+                          se = peso * 2.75;
+                      }
+                      else 
+                      {
+                         if(peso > 100)
+                         {
+                            se = peso * 2.55;
+                         }
+                      }
+                    }
+                  }
+
+                //fin calcular servicio de entrega
+
+
+                //tramite de manejo
+            
+                 var tm =0;
+                  if( pa < 50 )
+                  {
+                     tm = 2
+                  }
+                  else
+                  {
+                     if(pa >= 50)
+                      {
+                         tm = (pa * 0.102);
+                      } 
+                  }
+                //fin tramite de manejo
+
+                if( pa < 50 && peso <= 1  )
+                {
+                   $("#flete_"+user).val(12);
+                }
+                else
+                {
+                   var  manejo_miami = (pa * 0.053);
+                   $("#flete_"+user).val(se + sc+ manejo_miami+ tm);
+                  
+
+                   $("#flete_"+user).val(Math.round ($("#flete_"+user).val() * 100) / 100);
+
+                }
+
+                //subtotal
+                  var sub_t = parseFloat($("#pa_"+user).val()) + parseFloat($("#flete_"+user).val()); 
+
+                  $("#subtotal_"+user).val(Math.round (sub_t * 100) / 100);
+                //
+
+                //itbms
+                 var itbms = parseFloat($("#flete").val()* 0.07);
+                
+                  $("#itbms").val(Math.round(itbms * 100)/100 );
+                //fin itbms
+
+                //total a pagar
+                   var neto_pag = parseFloat($("#subtotal").val()) + parseFloat($("#itbms").val());
+
+                   $("#neto_pag").val(Math.round(neto_pag*100)/100);
+                //fin total a pagar
+            }
+          
+//fin elementos calc
 
 
             $(document).ready(function(){
