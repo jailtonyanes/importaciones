@@ -69,6 +69,7 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SM | IMPORTS</title>
     <!-- Tell the browser to be responsive to screen width -->
+    <link href='imagenes/favicon-16x16.png' rel='icon' type='image/x-icon'/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -91,7 +92,7 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>SM</b> IMPORTS</a>
+        <a href="../../index2.html"><img src="imagenes/SMI_LOGO.png" height="137" width="260" alt="Logo SMI"></a>
       </div><!-- /.login-logo -->
  <?php
     if($crud->getMensaje()=='No hay registros asociados a la consulta.')
@@ -106,7 +107,7 @@ if(isset($_SESSION['user_authorized'])) {session_destroy();}
   ?>  
  
   
-      <div class="login-box-body">
+      <div class="login-box-body" style="margin-top:-5%">
         <p class="login-box-msg">Inicio de sesión</p>
         <form action="" method="post" id="fr_login" name="fr_login">
           <div class="form-group has-feedback">

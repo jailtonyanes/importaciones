@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clientes</title>
     <!-- Tell the browser to be responsive to screen width -->
+        <link href='../../imagenes/favicon-16x16.png' rel='icon' type='image/x-icon'/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
@@ -195,7 +196,7 @@
                                         <div class="col-md-12"> 
                                             <div class="form-group">
                                                 <label for="distrito">Distrito:</label>
-                                               <select   class="form-control" id="distrito" name="distrito">
+                                               <select   class="form-control" id="distrito2" name="distrito2">
                                                </select>
                                             </div> 
                                         </div> 
@@ -408,8 +409,7 @@
             }
 
          function edit_user(user){
-
-           sacar_distrito2();
+          
           $.get('../../admin/xml_clientes.php?ocul='+user,{
             type: 'xml'
           },
@@ -420,14 +420,15 @@
            $("#apellido").val($(xml).find('apellido').text());
            $("#direccion").val($(xml).find('direccion').text());
            $("#provincia").val($(xml).find('provincia').text());
-           $("#distrito").val($(xml).find('distrito').text());
+           $("#distrito2").val($(xml).find('distrito').text());
            $("#telefono1").val($(xml).find('telefono1').text());
            $("#telefono2").val($(xml).find('telefono2').text());
            $("#email").val($(xml).find('email').text());
            $("#ingreso_pac").val('Actualizar');
+          // alert($(xml).find('distrito').text());
            
-
           });
+         
         }
 
         function delete_user(users)
@@ -464,7 +465,7 @@
 
           function sacar_distrito2()
          {
-           $("#distrito").load("../../admin/saca_distrito2.php",function(){
+           $("#distrito2").load("../../admin/saca_distrito2.php",function(){
                  
                   $(this).fadeIn("medium");
                   });

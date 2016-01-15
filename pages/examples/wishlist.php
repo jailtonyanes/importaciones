@@ -16,6 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Wishlist</title>
     <!-- Tell the browser to be responsive to screen width -->
+        <link href='../../imagenes/favicon-16x16.png' rel='icon' type='image/x-icon'/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
@@ -72,15 +73,16 @@
       <div class="modal-content">
          <div class="modal-header">
            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-           <h4>Iinfo del cliente</h4>
+           <h4>Info del cliente</h4>
          </div>
          <div class="modal-body">
                                
-                                <div class="row"> 
+                                <div class="row" style="margin-left:28%"> 
                                   <div class="col-md-12">       
                                             <div class="form-group">
                                                 <label for="provincia">Seleccione Cliente:</label>
-                                               <select   class="form-control" id="cliente" name="cliente">
+                                                <br/>
+                                               <select   class="selectpicker form-group"  data-live-search="true" id="cliente" name="cliente">
                                                      <option value="Escoja opción" slected="selected">Escoja opción</option>
                                                     <?php
                                                          $crud->setConsulta("SELECT id,nombre,apellido,cip_ruc FROM cliente ORDER BY nombre ASC, apellido ASC");
@@ -244,16 +246,16 @@
                                            <thead>
                                                <tr>
                                                    <th class="text-center">ITEM</th>
-                                                   <th class="text-center">TIPO DE SERVICIO</th>
-                                                     <th class="text-center">DESCRIPCIÓN</th>
-                                                   <th class="text-center">WEB-LINK</th>
-                                                   <th class="text-center">PRECIO ARTÍCULO</th>
-                                                   <th class="text-center">CANTIDAD</th>
+                                                   <th class="text-center">*TIPO DE SERVICIO</th>
+                                                     <th class="text-center">*DESCRIPCIÓN</th>
+                                                   <th class="text-center">*WEB-LINK</th>
+                                                   <th class="text-center">*PRECIO ARTÍCULO</th>
+                                                   <th class="text-center">*CANTIDAD</th>
                                                  
                                                    
-                                                   <th class="text-center">SHIPPING</th>
-                                                   <th class="text-center">PESO</th>
-                                                   <th class="text-center">STATE TAX</th>
+                                                   <th class="text-center">*SHIPPING</th>
+                                                   <th class="text-center">*PESO</th>
+                                                   <th class="text-center">*STATE TAX</th>
                                                    <th class="text-center">PRECIO WEB</th>
 
                                                    <th class="text-center">FLETE SMI</th>
@@ -273,11 +275,11 @@
                                              </td>
                                              <td align="left"><textarea class="form-control"   rows="2" id="descrip_ar_1" name="descrip_ar_1"></textarea></td>
                                              <td align="left"><textarea class="form-control"   rows="2" id="web_link_1" name="web_link_1"></textarea></td>
-                                                         <td align="right"><input type="text"  class="form-control" id="precio_1" name="precio_1" ></td>
+                                                         <td align="right"><input type="text" data-number-to-fixed="2" class="form-control m" id="precio_1" name="precio_1" ></td>
                                              <td align="right"><input type="text"  class="form-control" id="cantidad_1" name="cantidad_1" ></td>
                                             
                                 
-                                             <td align="right"><input type="text"  class="form-control" id="costo_ship_1" name="costo_ship_1" ></td>
+                                             <td align="right"><input type="text"  class="form-control m" id="costo_ship_1" name="costo_ship_1" ></td>
                                              <td align="right"><input type="text"  class="form-control" id="peso_1" name="peso_1" ></td>
                                               <td align="left"> 
                                               <select   class="form-control" id="state_tax_1" name="state_tax_1" onchange="costo_traida(1)" >
@@ -286,11 +288,11 @@
                                                  <option value="NO">NO</option>
                                               </select>
                                              </td>
-                                             <td align="right"><input type="text"  class="form-control" id="pa_1" name="pa_1" readonly ></td>
+                                             <td align="right"><input type="text"  class="form-control m" id="pa_1" name="pa_1" readonly ></td>
                                               
                                            
-                                             <td align="right"><input type="text"  class="form-control" id="flete_1" name="flete_1" readonly ></td>
-                                             <td align="right"><input type="text"  class="form-control" id="subtotal_1" name="subtotal_1" readonly ></td>
+                                             <td align="right"><input type="text"  class="form-control m" id="flete_1" name="flete_1" readonly ></td>
+                                             <td align="right"><input type="text"  class="form-control m" id="subtotal_1" name="subtotal_1" readonly ></td>
 
                                              <td align="center"><a style="cursor:pointer" class="fa  fa-plus-square-o" title="Añadir" onclick="agrega()"></a>&nbsp;&nbsp;
                                                <a style="cursor:pointer" class="fa fa-minus-circle" title="Eliminar" onclick="elimina(this.id)">
@@ -309,11 +311,23 @@
                            </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                                   <!--   <div class="col-md-12 text-right"> 
-                                       <input type="button"  name="ingreso_pac" id="ingreso_pac"  class="btn btn-success" value="Siguiente">
+                                  
+                              
+                                      <div class"col-md-6">
+                                              Subtotal: &nbsp;
+                            <input type="text"  id="sub_t_fact" name="sub_t_fact"  readonly placeholder="Subtotal">
+                            &nbsp;&nbsp;&nbsp;&nbsp;ITBMS:&nbsp;
+                            <input type="text"  id="itbms_t" name="itbms_t"  readonly placeholder="ITBMS">
+                              &nbsp;&nbsp;&nbsp;&nbsp;NETO A PAGAR:&nbsp;
+                            <input type="text"  id="neto_pg" name="neto_pg"  readonly placeholder="Neto a pagar">
+                                      </div>
+                                      <div class="col-md-6 text-right" style="margin-left: 51%;margin-top: -2.5%;"> 
+
+                                       <input type="button"  name="ingreso_pac" id="ingreso_pac"  class="btn btn-success" value="Guaradar">
                                       
                                        
-                                     </div> -->
+                                     </div>
+                             </div>        
                           </div><!-- /.box-footer-->
                         </div><!-- /.box -->
                      
@@ -370,81 +384,202 @@
      <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
      <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"></script>
 
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/i18n/defaults-*.min.js"></script>
+<script type="text/javascript" src="../../javascript/mask_money.js"></script>
+
+ 
+<script>
+  $(function() {
+   // $('.m').maskMoney();
+  })
+</script>
+
+
      <script type="text/javascript">
         
        
          //recorrer los hijos de la tabla
          
-         function recorrido()
+         function reajuste()
          {
-               //inicio funcion
+            var i=0; var k=1;
+              while(i < $("table tr").length)
+              {
+                
+                
+                var filas = $('table').find('tr ');
+               
+                 if(i>=1)
+                 {
+                   var sep = filas[i].id.split("_"); 
+                   var input = $('table tr#f_'+sep[1]).find('input');
+                   var select = $('table tr#f_'+sep[1]).find('select'); 
+                   var textarea =  $('table tr#f_'+sep[1]).find('textarea');
+                    
+                   
+                   
+                   //cambio los names de los inputs
+                   
+                   $("#"+input[0].id).attr("name","item_"+k);
+                   $("#"+input[1].id).attr("name","precio_"+k);
+                   $("#"+input[2].id).attr("name","cantidad_"+k);
+                   $("#"+input[3].id).attr("name","costo_ship_"+k);
+                   $("#"+input[4].id).attr("name","peso_"+k);
+                   $("#"+input[5].id).attr("name","pa_"+k);
+                   $("#"+input[6].id).attr("name","flete_"+k);
+                   $("#"+input[7].id).attr("name","subtotal_"+k);
+                   
+                   //cambio los id's de los inputs
+                   
+                   $("#"+input[0].id).attr("id","item_"+k);
+                   $("#"+input[1].id).attr("id","precio_"+k);
+                   $("#"+input[2].id).attr("id","cantidad_"+k);
+                   $("#"+input[3].id).attr("id","costo_ship_"+k);
+                   $("#"+input[4].id).attr("id","peso_"+k);
+                   $("#"+input[5].id).attr("id","pa_"+k);
+                   $("#"+input[6].id).attr("id","flete_"+k);
+                   $("#"+input[7].id).attr("id","subtotal_"+k);
+                   
+                   //cambio los values de los items
+                   
+                     $("#"+input[0].id).attr("value",k);
+                   
+                   //cambiamos los name de los selects
+                   
+                 $("#"+select[0].id).attr("name","tipo_serv_"+k);
+                 $("#"+select[1].id).attr("name","state_tax_"+k);
+                   
+                   
+                   //cambiamos el evento onchange del select state_tax
+                   
+                   $("#"+select[1].id).attr("onchange","costo_traida("+k+")");
+                   
+                   
+                   //cambiamos los id's de los selects
+                   
+                   
+                    $("#"+select[0].id).attr("id","tipo_serv_"+k);
+                    $("#"+select[1].id).attr("id","state_tax_"+k);
+                   
+                   //cambiamos los names de los text areas
+                   
+                    $("#"+textarea[0].id).attr("name","descrip_ar"+k);
+                    $("#"+textarea[1].id).attr("name","web_link"+k);
+                   
+                    //cambiamos los id's de los text areas
+                   
+                    $("#"+textarea[0].id).attr("id","descrip_ar"+k);
+                    $("#"+textarea[1].id).attr("id","web_link"+k);
+                   
+                   //cambiamos los id's de las filas
+                   $("#"+filas[i].id).attr("id","f_"+k);
+                   
+                   k++; 
+                   
+                 } 
 
-                  $("table tr").each(function (index) 
-                    { 
-                        alert(index);
-                    }) 
-
-               //fin funcion
-
+                
+                i++;      
+              }
 
          }
 
-
-         //fin recorrer los hijos de la tabla
-
-
-       //para manejar los items del grid
+         //
           
           function agrega()//agregar elementos al grid
           {
-            $("#contador").val(parseInt($("#contador").val())+1);
-            var control = parseInt($("#contador").val());
+              
+              if($("#tipo_serv_"+$("#contador").val()).val()!='Escoja opción'&&  $("#descrip_ar_"+$("#contador").val()).val()!=''&&  $("#web_link_"+$("#contador").val()).val()!=''&&  $("#precio_"+$("#contador").val()).val()!=''&& $("#cantidad_"+$("#contador").val()).val()!=''&& $("#costo_ship_"+$("#contador").val()).val()!=''&& $("#peso_"+$("#contador").val()).val()!=''&& $("#state_tax_"+$("#contador").val()).val()!='Escoja opción')
+               {
+                         
 
-            //elementos para añadir a la tabla por medio del append
-             var tr_abre = "<tr id=f_"+control+">";
-             var td1="<td align='right'><input type='text' readonly class='form-control' id='item_"+control+"' name='item_"+control+"' value='"+control+"' ></td>"+
-             "<td align='left'><select class='form-control id='tipo_serv"+control+"' name='tipo_serv"+control+"' >"+
-                                                 "<option value='Escoja opción'>Escoja opción</option>"+
-                                                 "<option value='Compras por internet'>Compras por internet</option>"+
-                                                 "<option value='Transporte de carga aérea'>Transporte de carga aérea</option>"+
-                                              "</select></td>";
-             var td2="<td align='left'><textarea class='form-control'   rows='2' id='descrip_ar"+control+"' name='descrip_ar"+control+"'></textarea></td>"+
-                                             "<td align='left'><textarea class='form-control'   rows='2' id='web_link"+control+"' name='web_link"+control+"'></textarea></td>"+
-                                              "<td align='right'><input type='text'  class='form-control' id='precio_"+control+"' name='precio_"+control+"' ></td>"+
-                                             "<td align='right'><input type='text'  class='form-control' id='cantidad_"+control+"' name='cantidad_"+control+"' ></td>"+
-                                            
-                                             "<td align='right'><input type='text'  class='form-control' id='costo_ship_"+control+"' name='costo_ship_"+control+"' ></td>"+
-                                             "<td align='right'><input type='text'  class='form-control' id='peso_"+control+"' name='peso_"+control+"' ></td>"+
+                      $("#contador").val(parseInt($("#contador").val())+1);
+                      var control = parseInt($("#contador").val());
 
-                                                "<td align='left'>"+ 
-                                              "<select   class='form-control' id='state_tax"+control+"' name='state_tax"+control+"' onchange='costo_traida("+control+")'>"+
-                                                 "<option value='Escoja opción'>Escoja opción</option>"+
-                                                 "<option value='SI'>SI</option>"+
-                                                 "<option value='NO'>NO</option>"+
-                                              "</select>"+
-                                             "</td>"+
+                      //elementos para añadir a la tabla por medio del append
+                       var tr_abre = "<tr id=f_"+control+">";
+                       var td1="<td align='right'><input type='text' readonly class='form-control' id='item_"+control+"' name='item_"+control+"' value='"+control+"' ></td>"+
+                       "<td align='left'><select class='form-control' id='tipo_serv_"+control+"' name='tipo_serv_"+control+"'>"+
+                                                           "<option value='Escoja opción'>Escoja opción</option>"+
+                                                           "<option value='Compras por internet'>Compras por internet</option>"+
+                                                           "<option value='Transporte de carga aérea'>Transporte de carga aérea</option>"+
+                                                        "</select></td>";
+                       var td2="<td align='left'><textarea class='form-control'   rows='2' id='descrip_ar"+control+"' name='descrip_ar"+control+"'></textarea></td>"+
+                                                       "<td align='left'><textarea class='form-control'   rows='2' id='web_link"+control+"' name='web_link"+control+"'></textarea></td>"+
+                                                        "<td align='right'><input type='text'  class='form-control' id='precio_"+control+"' name='precio_"+control+"' ></td>"+
+                                                       "<td align='right'><input type='text'  class='form-control' id='cantidad_"+control+"' name='cantidad_"+control+"' ></td>"+
+                                                      
+                                                       "<td align='right'><input type='text'  class='form-control' id='costo_ship_"+control+"' name='costo_ship_"+control+"' ></td>"+
+                                                       "<td align='right'><input type='text'  class='form-control' id='peso_"+control+"' name='peso_"+control+"' ></td>"+
 
-                                             "<td align='right'><input type='text'  class='form-control' id='pa_"+control+"' name='pa_"+control+"' ></td>"+
-                                             "<td align='right'><input type='text'  class='form-control' id='flete_"+control+"' name='flete_"+control+"' ></td>"+
-                                             "<td align='right'><input type='text'  class='form-control' id='subtotal_"+control+"' name='subtotal_"+control+"' ></td>"+
-                                              "<td align='center'><a style='cursor:pointer' class='fa  fa-plus-square-o' title='Añadir' onclick='agrega()'>&nbsp;&nbsp;"+
-                                               "<a style='cursor:pointer' class='fa fa-minus-circle' title='Eliminar' onclick='elimina("+control+")'>"+
-                                             "</td>";                                 
+                                                          "<td align='left'>"+ 
+                                                        "<select   class='form-control' id='state_tax_"+control+"' name='state_tax_"+control+"' onchange='costo_traida("+control+")'>"+
+                                                           "<option value='Escoja opción'>Escoja opción</option>"+
+                                                           "<option value='SI'>SI</option>"+
+                                                           "<option value='NO'>NO</option>"+
+                                                        "</select>"+
+                                                       "</td>"+
 
-             var tr_cierra = "</tr>";
+                                                       "<td align='right'><input type='text' readonly  class='form-control' id='pa_"+control+"' name='pa_"+control+"' ></td>"+
+                                                       "<td align='right'><input type='text'  readonly class='form-control' id='flete_"+control+"' name='flete_"+control+"' ></td>"+
+                                                       "<td align='right'><input type='text'  readonly class='form-control' id='subtotal_"+control+"' name='subtotal_"+control+"' ></td>"+
+                                                        "<td align='center'><a style='cursor:pointer' class='fa  fa-plus-square-o' title='Añadir' onclick='agrega()'>&nbsp;&nbsp;"+
+                                                         "<a style='cursor:pointer' class='fa fa-minus-circle' title='Eliminar' onclick='elimina("+control+")'>"+
+                                                       "</td>";                                 
 
-            $("#cont_list").append(tr_abre+td1+td2+tr_cierra);
-           
+                                var tr_cierra = "</tr>";
+
+                           
+                     $("#cont_list").append(tr_abre+td1+td2+tr_cierra);
+               }
+               else
+               {
+                 alert('Los campos con * son obligatorios.');
+               }
              
           }
 
           function elimina(user)//elimina elementos del grid
           {
-             if(parseInt($("#contador").val())>1)
-             {
-                $( "#f_"+user).remove();
-                $("#contador").val(parseInt($("#contador").val())-1);
-             }
+             
+                 if(parseInt($("#contador").val())>1)
+                 {
+                   
+                       if(confirm('Eliminar la fila seleccionada?') )
+                       {
+                          $( "#f_"+user).remove();
+                          $("#contador").val(parseInt($("#contador").val())-1);
+                          reajuste();
+
+
+                          //
+                                 var ci = 1;
+                                 var acum =0;
+                                 while(ci <= parseInt($("#contador").val()))
+                                 {
+                                   acum = acum + parseFloat($("#subtotal_"+ci).val());  
+                                   
+                                  ci++;
+                                 }
+                                 $("#sub_t_fact").val(Math.round(acum*100)/100);
+
+                                  var itb= acum*0.07;
+                                 $("#itbms_t").val(Math.round(itb*100)/100);
+                                   var npg = acum+itb;
+                                 $("#neto_pg").val( Math.round(npg*100)/100);
+                                 
+
+                          //
+                       }
+                 
+                 }
           }
        
        //fin para manejar los items del grid
@@ -693,8 +828,10 @@
             function costo_traida(user)
             {
                var q= parseInt($("#cantidad_"+user).val());
+
                var precio = parseFloat($("#precio_"+user).val());
-               var st_t =0;
+             
+               var st_t =0.00;
                var ship = parseFloat($("#costo_ship_"+user).val());
                if($("#state_tax_"+user).val()=='SI')
                {
@@ -702,11 +839,17 @@
                }
                //var precio_web = parseFloat($("#costo_ship_"+user).val());
 
-               $("#pa_"+user).val( ( (q*precio+ship)*st_t)+ (q*precio+ship) );
+               var pweb = ( (q*precio+ship)*st_t)+ (q*precio+ship); 
+
+               $("#pa_"+user).val( Math.round(pweb*100)/100 );
+               //$("#pa_"+user).maskMoney();
+
 
                //alert($("#pa_"+user).val());
               fletesmi(user);
-              recorrido();
+             // recorrido();
+
+
 
             }
 
@@ -783,25 +926,36 @@
                   $("#subtotal_"+user).val(Math.round (sub_t * 100) / 100);
                 //
 
-                //itbms
-                 var itbms = parseFloat($("#flete").val()* 0.07);
-                
-                  $("#itbms").val(Math.round(itbms * 100)/100 );
-                //fin itbms
+                         //
+                                 var ci = 1;
+                                 var acum =0;
+                                 while(ci <= parseInt($("#contador").val()))
+                                 {
+                                   acum = acum + parseFloat($("#subtotal_"+ci).val());  
+                                   
+                                  ci++;
+                                 }
+                                 $("#sub_t_fact").val(Math.round(acum*100)/100);
 
-                //total a pagar
-                   var neto_pag = parseFloat($("#subtotal").val()) + parseFloat($("#itbms").val());
+                                  var itb= acum*0.07;
+                                 $("#itbms_t").val(Math.round(itb*100)/100);
+                                   var npg = acum+itb;
+                                 $("#neto_pg").val( Math.round(npg*100)/100);
+                                 
 
-                   $("#neto_pag").val(Math.round(neto_pag*100)/100);
-                //fin total a pagar
+                          //
+
+
+
+            
             }
           
 //fin elementos calc
 
 
             $(document).ready(function(){
-                  
-         
+                   
+                 
                    //fin mostrar
                   $("#close_error").bind('click',function(){
                      $("#error_p").fadeOut('medium');
