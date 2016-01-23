@@ -8,12 +8,13 @@
   $crud = new Crud();
 
 
-  
-     
+  $pieces = explode('.', $_POST['suc']);
+  $sucursal = $pieces[0]; 
+
 	 if($_POST['idocul']=='')
 	 { 
-		  $array[0] = "'$_POST[nombre]','$_POST[apellido]','$_POST[nick]','$_POST[password]','$_POST[estado]','$_POST[perfil]','1'";
-		  $campos = "nombre,apellido,nick,password,estado,perfil,cambio_password";
+		  $array[0] = "'$_POST[nombre]','$_POST[apellido]','$_POST[nick]','$_POST[password]','$_POST[estado]','$_POST[perfil]','1','$sucursal'";
+		  $campos = "nombre,apellido,nick,password,estado,perfil,cambio_password,sucursal";
 		  $tabla = "usuario";
 		  $mensaje = "Usuario Guardado con exito.";
 		  $crud->insertar($array,$campos,$tabla,$con->getConection(),$mensaje); 
@@ -21,7 +22,7 @@
     else
     {
          $crud->update("update usuario set nombre = '$_POST[nombre]', apellido = '$_POST[apellido]',nick ='$_POST[nick]',
-         	password = '$_POST[password]',estado = '$_POST[estado]', perfil ='$_POST[perfil]', cambio_password ='1' where id = '$_POST[idocul]'",'Usuario actualizado exitosamente.',$con->getConection());  
+         	password = '$_POST[password]',estado = '$_POST[estado]', perfil ='$_POST[perfil]', cambio_password ='1',sucursal='$sucursal' where id = '$_POST[idocul]'",'Usuario actualizado exitosamente.',$con->getConection());  
     } 
 
 

@@ -6,6 +6,7 @@
    protected $ultimo_id;
    protected $num_rows;
    protected $mensaje;
+   protected $num_s_dec;
 
    public function setConsulta($consulta1)
     {
@@ -64,13 +65,13 @@
        }
       }
 
-       public function insertar2($valores,$campos,$tabla,$conexion,$mensaje_exito)
+
+    public function insertar2($valores,$campos,$tabla,$conexion,$mensaje_exito)
       {
-        echo'No se puede.';
-        /* $i=0;  $sw=0;
+         $i=0;  $sw=0;
          while ($i<sizeof($valores))
        {
-         $query= "insert into $tabla ($campos) values (".$valores[$i].")";     
+         $query= "insert into $tabla ($campos) values ".$valores[$i]."";     
            $result= mysql_query($query,$conexion);
            if($result)
              {
@@ -84,8 +85,10 @@
             
            $i++;
        }
-       */
-      } 
+      }
+
+
+ 
 
       public function update($consulta,$mensaje,$conexion)
       {
@@ -143,6 +146,18 @@
     {
       return $this->mensaje;
     }
+
+    public function getValor()
+    {
+       return $this->num_s_dec;
+    }
+
+  //quitar las ,'s a los numeros con decimales
+  public function moneda_dec($valor)
+  {
+     $this->num_s_dec = str_replace(",","" ,$valor); 
+     
+  }  
 
  }
 

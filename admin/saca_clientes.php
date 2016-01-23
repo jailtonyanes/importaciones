@@ -18,7 +18,7 @@
                                               <th>Apellido</th>
                                               <th>e-mail</th>
                                               <th>Tel 1</th>
-                                              <th>Tel 2</th>
+                                             
                                               
                                               <th>Acciones</th>
                                               
@@ -40,7 +40,7 @@
                             <td><?php echo $datos1[$i]['apellido'] ?></td>
                             <td><?php echo $datos1[$i]['email'] ?></td>
                               <td><?php echo $datos1[$i]['telefono1'] ?></td>
-                            <td><?php echo $datos1[$i]['telefono2'] ?></td>
+                          
                             <td align="center"><a style="cursor:pointer" class="fa fa-pencil" title="Edit" onclick="edit_user(<?php echo $datos1[$i]['id'] ?>)"></a> &nbsp;<a style="cursor:pointer" class="fa fa-trash" title="Remove" onclick="delete_user(<?php echo $datos1[$i]['id'] ?>)"></a>
                             </td>
                           </tr>

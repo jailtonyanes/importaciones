@@ -130,8 +130,7 @@
                                                        <li id="input5">Debe elegir una provincia.</li> 
                                                        <li id="input6">Debe elegir un distrito.</li>
                                                        <li id="input7">El campo teléfono 1 no debe ir en blanco.</li>
-                                                       <li id="input8">El campo teléfono 2 no debe ir en blanco.</li> 
-                                                       <li id="input9">El campo E-mail no debe ir en blanco.</li>  
+                                                 
                                                 </ul>                
                                            </div>
                                      </div>
@@ -299,7 +298,7 @@
           
           function validar_campos()
             {
-              if($("#cip_ruc").val()=="" ||  $("#nombre").val()=="" || $("#apellido").val()=="" || $("#direccion").val()=="" || $("#provincia").val()=="Escoja opción" || $("#distrito").val()=="Escoja opción" || $("#telefono1").val()==""  || $("#telefono2").val()==""  || $("#email").val()==""   )
+              if($("#cip_ruc").val()=="" ||  $("#nombre").val()=="" || $("#apellido").val()=="" || $("#direccion").val()=="" || $("#provincia").val()=="Escoja opción" || $("#distrito2").val()=="Escoja opción" || $("#telefono1").val()=="" )
               {
                 $('html,body').animate({scrollTop:'0px'}, 1000);
                 $("#error_p").fadeIn("medium");
@@ -325,7 +324,7 @@
                 {
                   $("#input5").fadeIn("medium");
                 } 
-                 if($("#distrito").val()=="Escoja opción")
+                 if($("#distrito2").val()=="Escoja opción")
                 {
                   $("#input6").fadeIn("medium");
                 }
@@ -364,7 +363,7 @@
                                          $("#apellido").val("");
                                          $("#direccion").val("");
                                          $("#provincia").val("Escoja opción");
-                                         $("#distrito").val("Escoja opción");
+                                         $("#distrito2").val("Escoja opción");
                                          $("#telefono1").val("");
                                          $("#telefono2").val("");
                                          $("#email").val("");
@@ -386,7 +385,7 @@
                                          $("#apellido").val("");
                                          $("#direccion").val("");
                                          $("#provincia").val("Escoja opción");
-                                         $("#distrito").val("Escoja opción");
+                                         $("#distrito2").val("Escoja opción");
                                          $("#telefono1").val("");
                                          $("#telefono2").val("");
                                          $("#email").val("");

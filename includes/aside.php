@@ -31,8 +31,17 @@
                 <a href="../examples/calculadora.php"><i class="fa fa-calculator"></i> <span>Calculadora</span></a>
               </li>
               <li>
-                <a href="../examples/wishlist.php"><i class="fa fa-list"></i> <span>Wish-list</span></a>
+                <a href="../examples/wishlist.php"><i class="fa fa-file"></i> <span>Crear cotización</span></a>
               </li>
+                  <li>
+                <a href="../examples/pedidos.php"><i class="fa fa-file-text"></i> <span>Generar pedidos</span></a>
+              </li>
+              </li>
+                  <li>
+                <a href="../examples/sucursales.php"><i class="fa fa-building"></i> <span>Crear Sucursales</span></a>
+              </li>
+
+              
                 <?php
              }
            ?>   

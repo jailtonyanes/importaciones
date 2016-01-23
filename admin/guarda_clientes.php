@@ -13,7 +13,7 @@
 	 if($_POST['idocul']=='')
 	 { 
 		   
-      $array[0] = "'$_POST[cip_ruc]','$_POST[nombre]','$_POST[apellido]','$_POST[direccion]','$_POST[provincia]','$_POST[distrito]','$_POST[telefono1]','$_POST[telefono1]','$_POST[email]'";
+      $array[0] = "'$_POST[cip_ruc]','$_POST[nombre]','$_POST[apellido]','$_POST[direccion]','$_POST[provincia]','$_POST[distrito2]','$_POST[telefono1]','$_POST[telefono1]','$_POST[email]'";
 		  $campos = "cip_ruc,nombre,apellido,direccion,provincia,distrito,telefono1,telefono2,email";
 		  $tabla = "cliente";
 		  $mensaje = "Cliente Guardado con exito.";
@@ -23,7 +23,7 @@
     {
          
 
-         $crud->update("update cliente set cip_ruc = '$_POST[cip_ruc]',nombre = '$_POST[nombre]',apellido = '$_POST[apellido]',direccion = '$_POST[direccion]',provincia = '$_POST[provincia]',distrito = '$_POST[distrito]',telefono1 = '$_POST[telefono1]',telefono2 = '$_POST[telefono2]',email = '$_POST[email]' where id = '$_POST[idocul]'",'Cliente actualizado exitosamente.',$con->getConection());  
+         $crud->update("update cliente set cip_ruc = '$_POST[cip_ruc]',nombre = '$_POST[nombre]',apellido = '$_POST[apellido]',direccion = '$_POST[direccion]',provincia = '$_POST[provincia]',distrito = '$_POST[distrito2]',telefono1 = '$_POST[telefono1]',telefono2 = '$_POST[telefono2]',email = '$_POST[email]' where id = '$_POST[idocul]'",'Cliente actualizado exitosamente.',$con->getConection());  
     } 
 
 

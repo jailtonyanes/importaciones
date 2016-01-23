@@ -1,5 +1,12 @@
 <?php
  include("../../includes/permisions.php");
+   include('../../_include/configuration.php');
+  include('../../_classes/conectar.php');
+  include('../../_classes/crud.php');
+
+  $con = new Coneccion($server,$user,$password,$dbname);
+  $con->conectar();
+  $crud = new Crud();
 ?>
 <!DOCTYPE html>
 <html>
@@ -118,6 +125,7 @@
                                                        <li id="input4">El campo Password no debe estar en balnco.</li>
                                                        <li id="input5">Debe elegir un Estado.</li> 
                                                        <li id="input6">Debe elegir un Perfil.</li> 
+                                                       <li id="input7">Debe elegir una Sucursal.</li> 
                                                 </ul>                
                                            </div>
                                      </div>
@@ -181,7 +189,29 @@
                                         </div> 
                                   </div> <!-- fin de una fila -->
                                   
-
+                                  <div class="row"><!-- una fila -->
+                                        <div class="col-md-12"> 
+                                            <div class="form-group">
+                                                <label for="suc">Sucursal:</label>
+                                               <select   class="form-control" id="suc" name="suc" >
+                                                  <option id="" selected="selected">Escoja opción</option>
+                                                    <?php
+                                                         $crud->setConsulta("SELECT id,nombre FROM sucursal ORDER BY nombre ASC");
+                                                         $datos1 = $crud->seleccionar($con->getConection());
+                                                         $i=0;
+                                                         while ($i<sizeof($datos1))
+                                                         {   
+                                                     ?>
+                                                          <option value="<?php echo $datos1[$i]['id'].'. '.$datos1[$i]['nombre'] ?>"><?php echo $datos1[$i]['id'].'. '.$datos1[$i]['nombre'] ?></option>
+                                                     <?php
+                                                           $i++;
+                                                          $con->desconectar();
+                                                         } 
+                                                     ?>
+                                               </select>
+                                            </div> 
+                                        </div> 
+                                  </div> <!-- fin de una fila -->
 
 
 
@@ -253,7 +283,7 @@
           
           function validar_campos()
             {
-              if($("#nombre").val()=="" || $("#apellido").val()=="" || $("#nick").val()=="" || $("#password").val()=="" || $("#estado").val()=="Escoja opción" || $("#perfil").val()=="Escoja opción"  )
+              if($("#nombre").val()=="" || $("#apellido").val()=="" || $("#nick").val()=="" || $("#password").val()=="" || $("#estado").val()=="Escoja opción" || $("#perfil").val()=="Escoja opción" || $("#suc").val()=="Escoja opción"  )
               {
                 $('html,body').animate({scrollTop:'0px'}, 1000);
                 $("#error_p").fadeIn("medium");
@@ -283,6 +313,10 @@
                 {
                   $("#input6").fadeIn("medium");
                 }
+                   if($("#suc").val()=="Escoja opción")
+                {
+                  $("#input7").fadeIn("medium");
+                }
 
               }
               else
@@ -306,6 +340,7 @@
                                          $("#password").val("");
                                          $("#estado").val("Escoja opción");
                                          $("#perfil").val("Escoja opción");
+                                         $("#suc").val("Escoja opción");
                                          
 
                                          sacar_usuarios();
@@ -325,7 +360,7 @@
                                          $("#password").val("");
                                          $("#estado").val("Escoja opción");
                                          $("#perfil").val("Escoja opción");
-                                         
+                                         $("#suc").val("Escoja opción");
 
                                          sacar_usuarios();
                                     } 
@@ -356,6 +391,7 @@
            $("#idocul").val($(xml).find('id').text());
            $("#perfil").val($(xml).find('perfil').text());
            $("#estado").val($(xml).find('estado').text());
+           $("#suc").val($(xml).find('sucursal').text());
            $("#ingreso_pac").val('Actualizar');
            
 
